@@ -3,3 +3,4 @@
 salesforce.schema
 config/*
 FOCUS.sublime*
+debug/*
