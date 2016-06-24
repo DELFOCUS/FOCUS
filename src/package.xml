@@ -7,8 +7,9 @@
         <name>ApexClass</name>
     </types>
     <types>
+        <members>Contact.Gender__c</members>
         <members>Contact.SSN__c</members>
         <name>CustomField</name>
     </types>
-    <version>36.0</version>
+    <version>34.0</version>
 </Package>
