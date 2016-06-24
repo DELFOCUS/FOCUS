@@ -3,7 +3,6 @@
     <types>
         <members>DEL_Git_TEST</members>
         <members>DEL_Git_TEST6</members>
-        <members>ProviderService</members>
         <members>bb_demo_class</members>
         <name>ApexClass</name>
     </types>
