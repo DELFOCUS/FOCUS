@@ -16,8 +16,11 @@ public class DEL_Git_TEST
 	//Kush
 	//Garold test 4
 	//Bhrigu
-<<<<<<< HEAD
 	//Harold 5
-=======
->>>>>>> origin/MockSprint
+	//Bhrigu6
+	//Chiranth
+
+	//Bhrigu demo changes 3:12 PM
+	//Prabhdeep New comment
+	//Harold Demo Changes 1
 }
