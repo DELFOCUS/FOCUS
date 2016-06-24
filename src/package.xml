@@ -6,5 +6,9 @@
         <members>bb_demo_class</members>
         <name>ApexClass</name>
     </types>
+    <types>
+        <members>Contact.SSN__c</members>
+        <name>CustomField</name>
+    </types>
     <version>36.0</version>
 </Package>
