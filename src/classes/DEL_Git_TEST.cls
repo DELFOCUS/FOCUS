@@ -16,5 +16,8 @@ public class DEL_Git_TEST
 	//Kush
 	//Garold test 4
 	//Bhrigu
+<<<<<<< HEAD
 	//Harold 5
+=======
+>>>>>>> origin/MockSprint
 }
