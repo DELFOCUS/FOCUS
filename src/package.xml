@@ -27,7 +27,7 @@ Guidelines to update package.xml
 	</types>
 
     <types>
-    	<members>ProviderSearchController_Final</members>
+    	<members>ProviderSearchController</members>
         <members>DEL_Git_TEST</members>
         <name>ApexClass</name>
     </types>
