@@ -3,6 +3,7 @@
 	<types>
 		<members>Account</members>
         <members>DD_Address__c</members>
+        <members>DD_Intake__c</members>
         <members>DD_Alternate_References__c</members>
         <members>DD_Provider_Address__c</members>
         <members>DD_Provider_Alias__c</members>
