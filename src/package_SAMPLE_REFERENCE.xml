@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+<!--
+Guidelines to update package.xml
+1.	Everytime a new artifact is committed to Git hub, make sure its corresponding type and member tag is also added 
+	to the package.xml file and package.xml file is also committed.
+2.	For new type, uncomment the corresponding type and add member name. If you dont see needed type, add the new code.
+--> 
+<!--
+	<types>
+		<members>Remove this and add members</members>
+		<name>CustomObject</name>
+	</types>
+-->
+<!--
+    <types>
+		<members>Remove this and add members</members>
+		<name>ApexPage</name>
+	</types>
+-->
+<!--
+    <types>
+		<members>Remove this and add members</members>    	
+        <name>ApexClass</name>
+    </types>
+-->
+<!--
+    <types>
+		<members>Remove this and add members</members>
+        <name>CustomField</name>
+    </types>
+-->
+<!--
+    <types>
+		<members>Remove this and add members</members>
+        <name>MatchingRule</name>
+    </types>
+-->
+<!--
+	<types>
+		<members>Remove this and add members</members>
+		<name>CustomLabels</name>
+	</types>
+-->
+<!--
+    <types>
+		<members>Remove this and add members</members>
+        <name>Workflow</name>
+    </types>
+<!--
+	<types>
+		<members>Remove this and add members</members>
+		<name>ApexComponent</name>
+	</types>
+-->
+
+<!--
+	<types>
+		<members>Remove this and add members</members>
+		<name>ApexTrigger</name>
+	</types>-->
+<!--<types>
+		<members>Remove this and add members</members>
+		<name>AppMenu</name>
+	</types>
+-->
+<!--
+	<types>
+		<members>Remove this and add members</members>
+		<name>ApprovalProcess</name>
+	</types>
+-->
+<!--
+	<types>
+		<members>Remove this and add members</members>
+		<name>AuthProvider</name>
+	</types>
+-->
+<!--
+	<types>
+		<members>Remove this and add members</members>
+		<name>CallCenter</name>
+	</types>
+-->
+<!--
+	<types>
+		<members>Remove this and add members</members>
+		<name>Community</name>
+	</types>
+	-->
+<!--
+	<types>
+		<members>Remove this and add members</members>
+		<name>ConnectedApp</name>
+	</types>
+-->
+<!--
+	<types>
+		<members>Remove this and add members</members>
+		<name>CustomApplication</name>
+	</types>
+-->
+<!--
+	<types>
+		<members>Remove this and add members</members>
+		<name>CustomApplicationComponent</name>
+	</types>
+-->
+<!--
+	<types>
+		<members>Remove this and add members</members>
+		<name>CustomMetadata</name>
+	</types>
+-->
+
+<!--
+	<types>
+		<members>Remove this and add members</members>
+		<name>CustomObjectTranslation</name>
+	</types>
+-->
+<!--
+	<types>
+		<members>Remove this and add members</members>
+		<name>CustomPageWebLink</name>
+	</types>
+-->
+<!--
+	<types>
+		<members>Remove this and add members</members>
+		<name>CustomPermission</name>
+	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>CustomSite</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>CustomTab</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>Dashboard</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>DataCategoryGroup</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>Document</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>EmailTemplate</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>FlexiPage</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>Flow</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>Group</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>HomePageComponent</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>HomePageLayout</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>Layout</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>Letterhead</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>Network</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>PermissionSet</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>Portal</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>PostTemplate</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>Profile</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>Queue</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>QuickAction</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>RemoteSiteSetting</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>Report</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>ReportType</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>Role</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>SamlSsoConfig</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>Scontrol</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>Settings</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>SharingSet</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>SiteDotCom</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>StaticResource</name>
+ 	</types>
+-->
+<!--
+	<types>
+ 		<members>Remove this and add members</members>
+		<name>Translations</name>
+ 	</types>
+-->
+    <version>34.0</version>
+</Package>
