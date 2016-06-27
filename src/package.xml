@@ -41,5 +41,9 @@
         <members>DD_Provider_Type__c</members>
         <name>Workflow</name>
     </types>
+    <types>
+        <members>*</members>
+        <name>Flow</name>
+    </types>
     <version>34.0</version>
 </Package>
