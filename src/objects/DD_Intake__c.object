@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>DD_Assigned_FC_Staff__c</fullName>
+        <externalId>false</externalId>
+        <label>Assigned FC Staff</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Benner, Megan L.</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cywinski, Sophia</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Greenplate, Vera L.</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Higgins, Melissa A.</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hudson, Trudi P.</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hughes, Amy M.</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Jacobs, Shawnique R.</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Leggins, Pamela L.</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>McKie, Toshonda N</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mclain, Monica L</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Morris, Monica K</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Reed, Brittany</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Thompson, Vivian</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>DD_Date_Attended_Orientation__c</fullName>
+        <externalId>false</externalId>
+        <label>Date Attended Orientation</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>DD_Date_Inquiry_Received__c</fullName>
+        <externalId>false</externalId>
+        <label>Date Inquiry Received</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>DD_Date_Orientation_Referred_To__c</fullName>
+        <externalId>false</externalId>
+        <label>Date Orientation Referred To</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>DD_Date_packet_mailed__c</fullName>
+        <externalId>false</externalId>
+        <label>Date packet mailed</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>DD_Follow_Up_Call_1_Made__c</fullName>
+        <externalId>false</externalId>
+        <label>Follow Up Call 1 Made</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>DD_Follow_Up_Call_1_Text__c</fullName>
+        <externalId>false</externalId>
+        <label>Follow Up Call 1 Text</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DD_Follow_Up_Call_2_Made__c</fullName>
+        <externalId>false</externalId>
+        <label>Follow Up Call 2 Made</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>DD_Follow_Up_Call_2_Text__c</fullName>
+        <externalId>false</externalId>
+        <label>Follow Up Call 2 Text</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DD_Follow_Up_Call_3_Made__c</fullName>
+        <externalId>false</externalId>
+        <label>Follow Up Call 3 Made</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>DD_Follow_Up_Call_3_Text__c</fullName>
+        <externalId>false</externalId>
+        <label>Follow Up Call 3 Text</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DD_How_Did_you_Hear_about_our_Pgm_Other__c</fullName>
+        <externalId>false</externalId>
+        <label>How Did you Hear about our Program?Other</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DD_How_Did_you_Hear_about_our_Program__c</fullName>
+        <externalId>false</externalId>
+        <label>How Did you Hear about our Program?</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Church</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Helpline</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Internet</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Friend</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Radio</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Facebook</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Event</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Newspaper</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Unknown</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DSCYF Staff</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>TV</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Self</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Foster Parent</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Family Member</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Always wanted to Be a Foster Parent</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>DD_Packet_sent_method__c</fullName>
+        <externalId>false</externalId>
+        <label>Packet sent method</label>
+        <picklist>
+            <picklistValues>
+                <fullName>US Mail</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>E-Mail</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Fax</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>DD_Respite_Only_Yes_No__c</fullName>
+        <externalId>false</externalId>
+        <label>Respite Only (Yes/ No)</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>DD_Screened_Out_Letter_Sent__c</fullName>
+        <externalId>false</externalId>
+        <label>Screened Out Letter Sent</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>DD_Screened_Out_Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>Screened Out Reason</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DD_Screened_Out_Yes_No__c</fullName>
+        <externalId>false</externalId>
+        <label>Screened Out (Yes/ No)</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <label>Intake</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Intake Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Intakes</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>DD_Foster_Care_Inquiry</fullName>
+        <active>true</active>
+        <label>Foster Care Inquiry</label>
+        <picklistValues>
+            <picklist>DD_Assigned_FC_Staff__c</picklist>
+            <values>
+                <fullName>Benner%2C Megan L%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cywinski%2C Sophia</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Greenplate%2C Vera L%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Higgins%2C Melissa A%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hudson%2C Trudi P%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hughes%2C Amy M%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jacobs%2C Shawnique R%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Leggins%2C Pamela L%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>McKie%2C Toshonda N</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mclain%2C Monica L</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Morris%2C Monica K</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reed%2C Brittany</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Thompson%2C Vivian</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>DD_How_Did_you_Hear_about_our_Program__c</picklist>
+            <values>
+                <fullName>Always wanted to Be a Foster Parent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Church</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DSCYF Staff</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Facebook</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Family Member</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Foster Parent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Friend</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Helpline</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Newspaper</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Radio</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Self</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TV</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unknown</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>DD_Packet_sent_method__c</picklist>
+            <values>
+                <fullName>E-Mail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fax</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>US Mail</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>DD_Respite_Only_Yes_No__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>DD_Screened_Out_Yes_No__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Additional_Information_required_Other</fullName>
+        <active>true</active>
+        <description>When Other  value is selected for How Did you Hear about our Program? field Additional Information should be provided in How Did you Hear about our Program?-Other field</description>
+        <errorConditionFormula>AND( 
+INCLUDES( DD_How_Did_you_Hear_about_our_Program__c  , &quot;Other&quot;), 
+ISBLANK( DD_How_Did_you_Hear_about_our_Pgm_Other__c ))</errorConditionFormula>
+        <errorDisplayField>DD_How_Did_you_Hear_about_our_Pgm_Other__c</errorDisplayField>
+        <errorMessage>Please provide the details of How Did you Hear about our Program?</errorMessage>
+    </validationRules>
+</CustomObject>
