@@ -11,7 +11,9 @@
         <members>DD_Provider_Type__c</members> 
         <members>Accreditation__c</members>
         <members>License__c</members> 
-		<name>CustomObject</name>
+        <members>DD_Service_Taxonomy__c</members>
+        <members>DD_FSF_Chart_Fields__c</members>
+		<name>CustomObject</name> 
 	</types>
 
     <types>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This is an object required to store the values coming via the FSF Chart Field Codes interface</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>DD_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Code</label>
+        <length>30</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DD_Hidden__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Hidden</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>DD_Record_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Record Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Budget Reference</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Funding</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Department</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Operating Unit</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Appropriation</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>GL Account</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Program</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Project</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Activity</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Category (UNSPSC)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Ship To</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Withholding Code</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Asset Profile ID</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>AM Business Unit</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Payment Handling</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Bank Code</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Payment Status</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Payment Method</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cancellation</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Vendor Witholding Class</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>DD_Status__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>DD_Text__c</fullName>
+        <externalId>false</externalId>
+        <label>Text</label>
+        <length>100</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>FSF_Chart_Fields</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>FSF_Chart_Fields Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>FSF_Chart_Fields</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

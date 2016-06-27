@@ -3284,6 +3284,7 @@
         <customTabListAdditionalFields>ACCOUNT.NAME</customTabListAdditionalFields>
         <customTabListAdditionalFields>ACCOUNT.ADDRESS1_CITY</customTabListAdditionalFields>
         <customTabListAdditionalFields>ACCOUNT.PHONE1</customTabListAdditionalFields>
+        <listViewButtons>Search</listViewButtons>
         <lookupDialogsAdditionalFields>ACCOUNT.NAME</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>ACCOUNT.SITE</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>CORE.USERS.ALIAS</lookupDialogsAdditionalFields>
@@ -3361,5 +3362,18 @@
         <showsLocation>false</showsLocation>
         <showsStatus>false</showsStatus>
         <url>http://www.google.com/search?q={!Account_Name}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Search</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Search</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/ProviderSearchPage</url>
     </webLinks>
 </CustomObject>
