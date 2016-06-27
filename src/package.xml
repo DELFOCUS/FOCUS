@@ -5,8 +5,29 @@ Guidelines to update package.xml
 1.	Everytime a new artifact is committed to Git hub, make sure its corresponding type and member tag is also added 
 	to the package.xml file and package.xml file is also committed.
 2.	For new type, uncomment the corresponding type and add member name. If you dont see needed type, add the new code.
--->
+--> 
+
+	<types>
+		<members>Account</members>
+        <members>DD_Address__c</members>
+        <members>DD_Alternate_References__c</members>
+        <members>DD_Provider_Address__c</members>
+        <members>DD_Provider_Alias__c</members>
+        <members>DD_Provider_NPI__c</members>
+        <members>DD_Provider_Services__c</members>
+        <members>DD_Provider_Type__c</members> 
+        <members>Accreditation__c</members>
+        <members>License__c</members> 
+		<name>CustomObject</name>
+	</types>
+
     <types>
+		<members>ProviderSearchPage_Final</members>
+		<name>ApexPage</name>
+	</types>
+
+    <types>
+    	<members>ProviderSearchController_Final</members>
         <members>DEL_Git_TEST</members>
         <name>ApexClass</name>
     </types>
@@ -33,11 +54,7 @@ Guidelines to update package.xml
 		<name>ApexComponent</name>
 	</types>
 -->
-<!--<types>
-		<members>Remove this and add members</members>
-		<name>ApexPage</name>
-	</types>
--->
+
 <!--
 	<types>
 		<members>Remove this and add members</members>
@@ -96,12 +113,7 @@ Guidelines to update package.xml
 		<name>CustomMetadata</name>
 	</types>
 -->
-<!--
-	<types>
-		<members>Remove this and add members</members>
-		<name>CustomObject</name>
-	</types>
--->
+
 <!--
 	<types>
 		<members>Remove this and add members</members>
