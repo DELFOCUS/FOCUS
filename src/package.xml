@@ -21,7 +21,10 @@ Guidelines to update package.xml
         <members>Contact.duplicate_contact_matching_rule</members>
         <name>MatchingRule</name>
     </types>
-
+	<types>
+		<members>CustomLabels</members>
+		<name>CustomLabels</name>
+	</types>
 <!--
 	<types>
 		<members>Remove this and add members</members>
@@ -83,12 +86,6 @@ Guidelines to update package.xml
 	<types>
 		<members>Remove this and add members</members>
 		<name>CustomApplicationComponent</name>
-	</types>
--->
-<!--
-	<types>
-		<members>Remove this and add members</members>
-		<name>CustomLabels</name>
 	</types>
 -->
 <!--
