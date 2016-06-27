@@ -23,6 +23,10 @@ Guidelines to update package.xml
 		<members>CustomLabels</members>
 		<name>CustomLabels</name>
 	</types>
+    <types>
+        <members>DD_Provider_Type__c</members>
+        <name>Workflow</name>
+    </types>
 <!--
 	<types>
 		<members>Remove this and add members</members>
@@ -302,11 +306,6 @@ Guidelines to update package.xml
 		<name>Translations</name>
  	</types>
 -->
-<!--
-	<types>
- 		<members>Remove this and add members</members>
-		<name>Workflow</name>
- 	</types>
--->
+
     <version>34.0</version>
 </Package>
