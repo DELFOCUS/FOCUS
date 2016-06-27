@@ -22,7 +22,7 @@ Guidelines to update package.xml
 	</types>
 
     <types>
-		<members>ProviderSearchPage_Final</members>
+		<members>ProviderSearchPage</members>
 		<name>ApexPage</name>
 	</types>
 
