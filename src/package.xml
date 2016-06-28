@@ -45,6 +45,11 @@
         <name>Flow</name>
     </types>
     <types>
+        <members>Account-FC Private Agency Layout</members>
+        <members>Account-Foster Care Inquiry Layout</members>
+        <members>Account-OCCL Provider Layout</members>
+        <members>Account-Parent Organization Layout</members>
+        <members>Account-Provider Entity Layout</members>
         <members>DD_Service_Taxonomy__c-Service Taxonomy Layout</members>
         <name>Layout</name>
     </types>
