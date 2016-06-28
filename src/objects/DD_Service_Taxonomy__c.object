@@ -44,6 +44,7 @@
         <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
@@ -59,19 +60,11 @@
         <label>Adoption/FosterCare/Neither/Both</label>
         <picklist>
             <picklistValues>
-                <fullName>Adoption (A)</fullName>
+                <fullName>Adoption</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Foster Care (FC)</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Neither (N)</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Both(B)</fullName>
+                <fullName>Foster Care</fullName>
                 <default>false</default>
             </picklistValues>
             <restrictedPicklist>true</restrictedPicklist>
@@ -86,15 +79,11 @@
         <label>Contracted/Non-Contracted/Both</label>
         <picklist>
             <picklistValues>
-                <fullName>C (contracted)</fullName>
+                <fullName>Contracted</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>NC (Non Contracted)</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>B (both)</fullName>
+                <fullName>Non-Contracted</fullName>
                 <default>false</default>
             </picklistValues>
             <restrictedPicklist>true</restrictedPicklist>
@@ -109,15 +98,15 @@
         <label>Conv-Residential/Nonresidential</label>
         <picklist>
             <picklistValues>
-                <fullName>Residential (R)</fullName>
+                <fullName>Residential</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Non-Residential (NR)</fullName>
+                <fullName>Non-Residential</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>(N/A)</fullName>
+                <fullName>N/A</fullName>
                 <default>false</default>
             </picklistValues>
             <restrictedPicklist>true</restrictedPicklist>
@@ -185,31 +174,7 @@
         <label>Division</label>
         <picklist>
             <picklistValues>
-                <fullName>All</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
                 <fullName>DFS</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>DFS+DMSS</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>DFS+DMSS+DYRS</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>DFS+DPBHS</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>DFS+DPBHS+DYRS</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>DFS+DYRS</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
@@ -217,11 +182,11 @@
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>DPBHS: DPBHS+DYRS</fullName>
+                <fullName>DYRS</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>DYRS</fullName>
+                <fullName>DPBHS</fullName>
                 <default>false</default>
             </picklistValues>
             <restrictedPicklist>true</restrictedPicklist>
@@ -237,11 +202,11 @@
         <label>Foster Care Setting Type</label>
         <picklist>
             <picklistValues>
-                <fullName>Foster Care (FC)</fullName>
+                <fullName>Foster Care</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Juvenile Justice (JJ)</fullName>
+                <fullName>Juvenile Justice</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
@@ -334,22 +299,14 @@
     <fields>
         <fullName>DD_MA_Service__c</fullName>
         <externalId>false</externalId>
-        <label>MA Fee for Service/Bundled/Neither/Both</label>
+        <label>MA Fee for Service</label>
         <picklist>
             <picklistValues>
-                <fullName>Fee For Service (FFS)</fullName>
+                <fullName>Fee For Service</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
                 <fullName>Bundled</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Neither (N)</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Both</fullName>
                 <default>false</default>
             </picklistValues>
             <restrictedPicklist>true</restrictedPicklist>
@@ -364,15 +321,11 @@
         <label>Paid/Non-Paid/Both</label>
         <picklist>
             <picklistValues>
-                <fullName>P(Paid)</fullName>
+                <fullName>Paid</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>NP (Nonpaid)</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>B (Both)</fullName>
+                <fullName>Non-paid</fullName>
                 <default>false</default>
             </picklistValues>
             <restrictedPicklist>true</restrictedPicklist>
@@ -394,10 +347,6 @@
                 <fullName>No</fullName>
                 <default>false</default>
             </picklistValues>
-            <picklistValues>
-                <fullName>Both</fullName>
-                <default>false</default>
-            </picklistValues>
             <restrictedPicklist>true</restrictedPicklist>
             <sorted>false</sorted>
         </picklist>
@@ -410,11 +359,11 @@
         <label>Residential/Nonresidential</label>
         <picklist>
             <picklistValues>
-                <fullName>Residential (R)</fullName>
+                <fullName>Residential</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Non-Residential (NR)</fullName>
+                <fullName>Non-Residential</fullName>
                 <default>false</default>
             </picklistValues>
             <restrictedPicklist>true</restrictedPicklist>
@@ -454,7 +403,22 @@
         <label>Service Taxonomy Name</label>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Service Taxonomies</pluralLabel>
-    <searchLayouts/>
+    <pluralLabel>Service Taxonomy</pluralLabel>
+    <searchLayouts>
+        <listViewButtons>Search</listViewButtons>
+    </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
+    <webLinks>
+        <fullName>Search</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Search</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/TaxonomySearch</url>
+    </webLinks>
 </CustomObject>
