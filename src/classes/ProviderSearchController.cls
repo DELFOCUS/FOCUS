@@ -2,12 +2,18 @@ public with sharing class ProviderSearchController {
 
   private String soql {get;set;}
   private String soql2 {get;set;}//Benny
+  private Boolean addrDisable {get;set;}
   
   public List<account> providers {get;set;}
   public List<account> providers2 {get;set;}//Benny
   public account provider {get;set;}
     
-  
+   public void methodOne()
+    {
+        addrDisable = true;
+        system.debug('Working');
+    }
+
   public String sortDir {
     get  { if (sortDir == null) {  sortDir = 'asc'; } return sortDir;  }
     set;
@@ -30,6 +36,7 @@ public with sharing class ProviderSearchController {
   public ProviderSearchController() {
     soql = label.ProviderSearchSOQL;
     soql2 = 'SOQL';//Benny
+    addrDisable = false;
     runQuery();
   }
    
@@ -138,7 +145,7 @@ public with sharing class ProviderSearchController {
     String accExpTill = Apexpages.currentPage().getParameters().get('accExpTill'); 
     //Benny
       
-    if(!refn.equals('') ){
+    if(!refn.equals('') || !refType.equals('')){
        soql =label.ProviderSearchSOQL+' and id in (select DD_Provider__c from dd_Alternate_References__c where dd_Provider__c != null';   
         if (!refn.equals(''))
           soql += ' and dd_Reference_Number__c LIKE \'%'+String.escapeSingleQuotes(refn)+'%\'';
@@ -172,7 +179,7 @@ public with sharing class ProviderSearchController {
         if (!firstName.equals(''))
           soql += ' and dd_First_Name__c LIKE \'%'+String.escapeSingleQuotes(firstName)+'%\'';
         if (!lastName.equals(''))
-          soql +=  ' and dd_Last_name__c LIKE \'%'+String.escapeSingleQuotes(lastName)+'%\'';
+          soql +=  ' and name LIKE \'%'+String.escapeSingleQuotes(lastName)+'%\'';
         if (!emrPro.equals(''))
           soql +=  ' and dd_Emergency_Provider__c LIKE \'%'+String.escapeSingleQuotes(emrPro)+'%\'';
         if (!gtf.equals(''))
