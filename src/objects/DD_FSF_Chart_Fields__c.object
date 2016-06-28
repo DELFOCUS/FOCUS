@@ -44,6 +44,7 @@
         <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>This is an object required to store the values coming via the FSF Chart Field Codes interface</description>
@@ -52,8 +53,17 @@
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>DD_Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>Active</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
     <fields>
         <fullName>DD_Code__c</fullName>
         <externalId>false</externalId>
@@ -164,14 +174,6 @@
         <type>Picklist</type>
     </fields>
     <fields>
-        <fullName>DD_Status__c</fullName>
-        <defaultValue>false</defaultValue>
-        <externalId>false</externalId>
-        <label>Status</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>DD_Text__c</fullName>
         <externalId>false</externalId>
         <label>Text</label>
@@ -184,6 +186,11 @@
     <label>FSF_Chart_Fields</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>DD_Record_Type__c</columns>
+        <columns>DD_Code__c</columns>
+        <columns>DD_Text__c</columns>
+        <columns>DD_Active__c</columns>
+        <columns>DD_Hidden__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
