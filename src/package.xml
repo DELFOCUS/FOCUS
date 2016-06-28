@@ -45,6 +45,10 @@
         <name>Flow</name>
     </types>
     <types>
+        <members>DD_Service_Taxonomy__c-Service Taxonomy Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
         <members>Contact.duplicate_contact_matching_rule</members>
         <name>MatchingRule</name>
     </types>
