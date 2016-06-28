@@ -1,19 +1,19 @@
-<apex:page controller="ProviderSearchController" sidebar="false">
+<apex:page controller="ProviderSearchController"  sidebar="false">
    <head>
       <apex:includeScript value="{!URLFOR($Resource.jquery300)}"  />
       <apex:stylesheet value="{!URLFOR($Resource.SLDS103, 'assets/styles/salesforce-lightning-design-system-vf.css')}" />
-      <apex:includeScript value="{!URLFOR($Resource.svg4everybody, 'svg4everybody-master/dist/svg4everybody.js')}" />
+      <!--<apex:includeScript value="{!URLFOR($Resource.svg4everybody, 'svg4everybody-master/dist/svg4everybody.js')}" />-->
    </head>
    <body>
       <div class="slds">
          <div class="slds-grid">
-            <div class="slds-medium-size--12-of-12 slds-large-size--12-of-12">
+            <div class="slds-medium-size--1-of-1 slds-large-size--1-of-1">
                <apex:form >
                   <apex:pageMessages id="errors" />
                   <apex:pageBlock title="Find Me A Provider!" mode="edit">
                      <!--<div class="slds slds-grid"> -->
                         <div class=" slds-medium-size--8-of-12 slds-large-size--12-of-12 ">
-                           <table border="0" cellpadding="0" cellspacing="0" width="100%" class="slds-table slds-table--bordered slds-table--cell-buffer slds-no-row-hover">
+                           <table border="0" cellpadding="0" cellspacing="0" class="slds-table slds-table--bordered slds-table--cell-buffer slds-no-row-hover">
                               <tr>
                                  <td valign="top" height="70px">
                                     <apex:pageBlock mode="edit" id="criteria" title="Provider Search">
@@ -342,7 +342,7 @@
                                           });
                                        </script> 
                                        <apex:pageBlock mode="edit" id="results">
-                                          <apex:pageBlockTable value="{!providers}" var="provider" width="100%" styleclass="fixme">
+                                          <apex:pageBlockTable value="{!providers}" var="provider" styleclass="fixme">
                                              <!-- styleclass="slds-table slds-table--bordered slds-table--cell-buffer slds-table--fixed-layout" > -->
                                              <!-- <apex:column >
                                                 <apex:facet name="header">
@@ -554,10 +554,10 @@
                               </tr>
                            </table>
                         </div>
-                     <!--</div>
-                     <apex:pageBlock title="Debug - SOQL" id="debug">
+                     <!--</div> -->
+                     <!--<apex:pageBlock title="Debug - SOQL" id="debug">
                         <apex:outputText value="{!debugSoql}" /><br/><br/><apex:outputText value="{!debugSoql2}" />      
-                        </apex:pageBlock>  -->  
+                        </apex:pageBlock>    -->
                   </apex:pageBlock>
                </apex:form>
             </div>
