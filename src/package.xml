@@ -26,7 +26,7 @@
         <members>DD_Address__c</members>
         <members>DD_Alternate_References__c</members>
         <members>DD_FSF_Chart_Fields__c</members>
-        <members>DD_Intake__c</members>
+        <members>DD_Inquiry__c</members>
         <members>DD_Provider_Address__c</members>
         <members>DD_Provider_Alias__c</members>
         <members>DD_Provider_NPI__c</members>
@@ -52,5 +52,5 @@
         <members>DD_Provider_Type__c</members>
         <name>Workflow</name>
     </types>
-    <version>37.0</version>
+    <version>34.0</version>
 </Package>
