@@ -55,6 +55,7 @@
         <members>Account-Parent Organization Layout</members>
         <members>Account-Provider Entity Layout</members>
         <members>DD_Service_Taxonomy__c-Service Taxonomy Layout</members>
+		<members>DD_FSF_Chart_Fields__c-FSF_Chart_Fields Layout</members>
         <name>Layout</name>
     </types>
     <types>
