@@ -111,7 +111,8 @@ public with sharing class ProviderSearchController {
             url += '&00N35000000Hw5S=' + gtf;
         if (emrPro != '')
             url += '&00N35000000Hw5X=' + emrPro;
-        PageReference reference=new PageReference(url);
+        String url2 = '/setup/ui/recordtypeselect.jsp?ent=Account&retURL=%2F001%2Fo&save_new_url=%2F001%2Fe%3FretURL%3D%252F001%252Fo';
+        PageReference reference=new PageReference(url2);
         reference.setRedirect(true);
         return reference;
     }
