@@ -1,0 +1,287 @@
+<apex:page controller="TaxonomySearchCtrl" sidebar="false" id="pgId">
+    <style>
+        body .pbBody table.list tr.dataRow.highlight td {
+           background-color : #fff3e6 !important;
+      }
+    </style>
+    <apex:form id="frmId">
+        <apex:pageBlock title="Service Taxonomy Search">
+            <apex:pageMessages id="Errors"/>
+            <apex:pageBlock >
+                <div >
+                <table>
+                    <tr>
+                        <td>
+                            <table columns="2">
+                                <tr>
+                                    <td>
+                                        Level 1 Code
+                                    </td>  
+                                    <td>
+                                        <apex:inputText value="{!Level1Code}"/>
+                                    </td>          
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Level 1 Description
+                                    </td>  
+                                    <td>
+                                        <apex:inputText value="{!Level1Desc}"/>
+                                    </td>          
+                                </tr> 
+                                <tr>
+                                    <td>
+                                        Level 2 Code
+                                    </td>  
+                                    <td>
+                                        <apex:inputText value="{!Level2Code}"/>
+                                    </td>          
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Level 2 Services
+                                    </td>  
+                                    <td>
+                                        <apex:inputText value="{!Level2Serv}"/>
+                                    </td>          
+                                </tr> 
+                                <tr>
+                                    <td>
+                                        Level 3 Code
+                                    </td>  
+                                    <td>
+                                        <apex:inputText value="{!Level3Code}"/>
+                                    </td>          
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Level 3 SubServices
+                                    </td>  
+                                    <td>
+                                        <apex:inputText value="{!Level3SubServ}"/>
+                                    </td>          
+                                </tr> 
+                            </table>
+                        </td>
+                        <td>
+                            <table columns="2">
+                                <tr>
+                                    <td>
+                                        Health Procedure Codes
+                                    </td>  
+                                    <td>
+                                        <apex:inputText value="{!HPC}"/>
+                                    </td>          
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Divison
+                                    </td>  
+                                    <td>
+                                        <apex:selectList value="{!selectedDivision}" size="1">
+                                            <apex:selectOptions value="{!Divisions}"/>
+                                        </apex:selectList>
+                                    </td>          
+                                </tr> 
+                                <tr>
+                                    <td>
+                                        Residential/Non-Residential 
+                                    </td>  
+                                    <td>
+                                        <apex:selectList value="{!Resident}" size="1">
+                                            <apex:selectOptions value="{!Residential}"/>
+                                        </apex:selectList>
+                                    </td>          
+                                </tr>               
+                                <tr>
+                                    <td>
+                                        Service Status 
+                                    </td>  
+                                    <td>
+                                        <apex:selectList value="{!serviceStat}" size="1">
+                                            <apex:selectOptions value="{!Status}"/>
+                                        </apex:selectList>
+                                    </td>          
+                                </tr>               
+                            </table>
+                        </td>
+                    </tr>
+                </table>   
+                </div>
+                <apex:commandButton value="Search" action="{!getMatchingRecords}" rerender="results,Errors,NoResults"/>
+                <apex:commandButton value="Create New" action="{!createNew}" rerender="dummy"/>
+            </apex:pageBlock>  
+            <apex:outputPanel id="results">
+            <apex:pageBlock rendered="{!IF(ShowResults == 'Yes', true, false)}">
+            <div style="overflow: scroll; width: 70%; min-height: 200px;">  
+                <apex:pageBlockTable value="{!serviceTaxonomies}" var="taxnomony" width="100%">
+                    <apex:column >
+                        <apex:facet name="header">
+                            Taxonomy ID
+                        </apex:facet>
+                        <apex:outputLink value="{!URLFOR($Action.DD_Service_Taxonomy__c.View, taxnomony.id)}">
+                            {!taxnomony.ID}
+                        </apex:outputLink>               
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">
+                            Level 1 Code
+                        </apex:facet>
+                        <apex:outputText >
+                            {!taxnomony.DD_Level_1_Code__c }
+                        </apex:outputText>                 
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">
+                            Level 1 : Description
+                        </apex:facet>
+                        <apex:outputText >
+                            {!taxnomony.DD_Level_1__c  }
+                        </apex:outputText>                 
+                    </apex:column>
+                    
+                    <apex:column >
+                        <apex:facet name="header">
+                            Level 2 Code
+                        </apex:facet>
+                        <apex:outputText >
+                            {!taxnomony.DD_Level_2_Code__c }
+                        </apex:outputText>                 
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">
+                            Level 2 : Services
+                        </apex:facet>
+                        <apex:outputText >
+                            {!taxnomony.DD_Level_2__c  }
+                        </apex:outputText>                 
+                    </apex:column>
+                    
+                    <apex:column >
+                        <apex:facet name="header">
+                            Level 3 Code
+                        </apex:facet>
+                        <apex:outputText >
+                            {!taxnomony.DD_Level_3_Code__c }
+                        </apex:outputText>                 
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">
+                            Level 3 : SubServices
+                        </apex:facet>
+                        <apex:outputText >
+                            {!taxnomony.DD_Level_3__c  }
+                        </apex:outputText>                 
+                    </apex:column>
+                    
+                    <apex:column >
+                        <apex:facet name="header">
+                            Health Procedure Codes
+                        </apex:facet>
+                        <apex:outputText >
+                            {!taxnomony.DD_Health_Procedure_Codes__c }
+                        </apex:outputText>                 
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">
+                            Division
+                        </apex:facet>
+                        <apex:outputText >
+                            {!taxnomony.DD_Division__c  }
+                        </apex:outputText>                 
+                    </apex:column>
+                    
+                    <apex:column >
+                        <apex:facet name="header">
+                            Conversion Divisions
+                        </apex:facet>
+                        <apex:outputText >
+                            {!taxnomony.DD_Conversion_Divisions__c }
+                        </apex:outputText>                 
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">                          
+                            Contracted/Non-Contracted/Both
+                        </apex:facet>
+                        <apex:outputText >
+                            {!taxnomony.DD_Contract_Details__c  }
+                        </apex:outputText>                 
+                    </apex:column>
+                    
+                    <apex:column >
+                        <apex:facet name="header">
+                            Paid/Non-Paid/Both
+                        </apex:facet>
+                        <apex:outputText >
+                            {!taxnomony.DD_Paid_Status__c }
+                        </apex:outputText>                 
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">                          
+                            IV-E Reimbursable Payment
+                        </apex:facet>
+                        <apex:outputText >
+                            {!taxnomony.DD_Reimbursable_Payment__c  }
+                        </apex:outputText>                 
+                    </apex:column>
+                    
+                    <apex:column >
+                        <apex:facet name="header">
+                            Adoption/FosterCare
+                        </apex:facet>
+                        <apex:outputText >
+                            {!taxnomony.DD_Adoption_Status__c }
+                        </apex:outputText>                 
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">                          
+                            Foster Care Setting Type
+                        </apex:facet>
+                        <apex:outputText >
+                            {!taxnomony.DD_Foster_Care_Setting_Type__c  }
+                        </apex:outputText>                 
+                    </apex:column>
+                    
+                    <apex:column >
+                        <apex:facet name="header">
+                            MA Fee for Service
+                        </apex:facet>
+                        <apex:outputText >
+                            {!taxnomony.DD_MA_Service__c }
+                        </apex:outputText>                 
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">                          
+                            Residential/Nonresidential
+                        </apex:facet>
+                        <apex:outputText >
+                            {!taxnomony.DD_Residential_Status__c  }
+                        </apex:outputText>                 
+                    </apex:column>
+                    
+                    <apex:column >
+                        <apex:facet name="header">
+                            Conv-Residential/Nonresidential
+                        </apex:facet>
+                        <apex:outputText >
+                            {!taxnomony.DD_Conv_Residential_Status__c }
+                        </apex:outputText>                 
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">                                                      
+                            Service Status
+                        </apex:facet>
+                        <apex:outputText >
+                            {!taxnomony.DD_Service_Status__c  }
+                        </apex:outputText>                 
+                    </apex:column>
+                </apex:pageBlockTable>
+                </div>
+            </apex:pageBlock>
+            </apex:outputPanel>
+            <apex:outputPanel id="NoResults">
+                <apex:outputText value="No Matching Results" rendered="{!IF(ShowResults == 'No', true, false)}"/>                
+            </apex:outputPanel>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
