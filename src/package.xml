@@ -38,6 +38,7 @@
         <members>DD_Provider_Type__c</members>
         <members>DD_Service_Taxonomy__c</members>
         <members>License__c</members>
+        
         <name>CustomObject</name>
     </types>
     <types>
@@ -61,6 +62,7 @@
         <members>Accreditation__c-Accreditation Layout</members>
         <members>License__c-License/Accreditation Layout</members>
         <members>Account-Account Layout</members>
+        <members>DD_Address__c-Address Layout</members>
         <name>Layout</name>
     </types>
     <types>
