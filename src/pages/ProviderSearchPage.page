@@ -32,6 +32,7 @@
                                               var zip = document.getElementById("zip").value;
                                               var apt = document.getElementById("apt").value;
                                               var phone = document.getElementById("phone").value;
+                                              var npi = document.getElementById("npi").value;
                                           
                                               //Benny
                                               var licType = document.getElementById("licType").value;
@@ -48,8 +49,8 @@
                                               
                                               
                                               
-                                              console.log('refn>'+refn+' refType '+refType); 
-                                              searchServer(fname , lname,street,city,emergencyPro,gtf,refn,refType,state,zip,apt,phone,licType, //Benny
+                                              console.log('fname>'+fname+' refType '+refType); 
+                                              searchServer(fname , lname,street,city,emergencyPro,gtf,refn,refType,state,zip,apt,phone,npi,licType, //Benny
                                                            licNumber,licEffFrom,licEffTill,licExpFrom,licExpTill,accType,accEffFrom,accEffTill,accExpFrom,accExpTill);
                                               
                                           
@@ -80,6 +81,7 @@
                                           <apex:param name="zip" value=""/>
                                           <apex:param name="apt" value=""/>
                                           <apex:param name="phone" value=""/>
+                                           <apex:param name="npi" value=""/>
                                           <!--Benny-->
                                           <apex:param name="licType" value=""/>
                                           <apex:param name="licNumber" value=""/>
@@ -122,6 +124,11 @@
                                                          <option value="{!emr}">{!emr}</option>
                                                       </apex:repeat>
                                                    </select>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td align="left">NPI #</td>
+                                                <td><input type="text" id="npi" />
                                                 </td>
                                              </tr>
                                              <tr>
@@ -283,6 +290,7 @@
                                           </tr>
                                           <tr>
                                              <td align="left">Accreditation Type</td>
+                                             
                                              <td>
                                                 <select id="accType" >
                                                    <option value=""></option>
@@ -325,7 +333,7 @@
                                  <td colspan="4">
                                     <div class="slds-button-group" role="group" style="display:table;margin: auto;">
                                        <apex:commandButton value="Search" onclick="javascript: doSearch();" rerender="dummy"/>
-                                       <apex:commandButton value="Clear"  onclick="this.form.reset();return false;" rerender="results,debug"/>
+                                       <apex:commandButton value="Clear" action="{!resetSOQL}" onclick="this.form.reset();return false;" rerender="results,debug"/>
                                        <apex:commandButton value="New Provider" onclick="javascript: newProvider();" rerender="results,debug"/>
                                     </div>
                                  </td>
@@ -399,6 +407,16 @@
                                                    </apex:commandLink>
                                                 </apex:facet>
                                                 <apex:outputField value="{!provider.DD_Status__c}"/>
+                                             </apex:column>
+                                               <apex:column rendered="{!If($CurrentPage.parameters.npi!=null,true,false)}">
+                                                <apex:facet name="header">
+                                                   <apex:commandLink value="NPI #" action="{!toggleSort}" rerender="results,debug">
+                                                      <apex:param name="sortField" value="npi" assignTo="{!sortField}"/>
+                                                   </apex:commandLink>
+                                                </apex:facet>
+                                                <apex:outputPanel rendered="{!IF( provider.NPI__r != null && provider.npi__r.size > 0,true, false)}">
+                                                   <apex:outputText value="{!provider.NPI__r[0].DD_NPI_Text__c}"/>
+                                                </apex:outputPanel>
                                              </apex:column>
                                              <apex:column >
                                                 <apex:facet name="header">
@@ -554,10 +572,10 @@
                               </tr>
                            </table>
                         </div>
-                     <!--</div> -->
-                     <!--<apex:pageBlock title="Debug - SOQL" id="debug">
+                     <!--</div> 
+                    <apex:pageBlock title="Debug - SOQL" id="debug">
                         <apex:outputText value="{!debugSoql}" /><br/><br/><apex:outputText value="{!debugSoql2}" />      
-                        </apex:pageBlock>    -->
+                        </apex:pageBlock>  -->  
                   </apex:pageBlock>
                </apex:form>
             </div>

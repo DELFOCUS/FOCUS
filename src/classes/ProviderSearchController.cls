@@ -92,7 +92,9 @@ public with sharing class ProviderSearchController {
 
   }
 
-
+    public void resetSOQL(){
+        soql =label.ProviderSearchSOQL;
+    }
   public PageReference newProvider() {
         
         //PageReference reference=new PageReference('https://www.google.com');  
@@ -131,6 +133,7 @@ public with sharing class ProviderSearchController {
     String zip = Apexpages.currentPage().getParameters().get('zip');
     String apt = Apexpages.currentPage().getParameters().get('apt');
     String phone = Apexpages.currentPage().getParameters().get('phone');
+    String npi = Apexpages.currentPage().getParameters().get('npi');
     //Benny
     String licType = Apexpages.currentPage().getParameters().get('licType');
     String licNumber = Apexpages.currentPage().getParameters().get('licNumber');
@@ -145,8 +148,12 @@ public with sharing class ProviderSearchController {
     String accExpFrom = Apexpages.currentPage().getParameters().get('accExpFrom'); 
     String accExpTill = Apexpages.currentPage().getParameters().get('accExpTill'); 
     //Benny
-      
-    if(!refn.equals('') || !refType.equals('')){
+      if(!string.isEmpty(npi))  {
+          soql =label.ProviderSearchSOQL+' and id in(select DD_Provider_Lookup__c from 	DD_Provider_NPI__c where DD_Provider_Lookup__c != null ';
+          soql += ' and DD_NPI_Text__c LIKE \'%'+String.escapeSingleQuotes(npi)+'%\'';
+          soql += ') ';
+      }
+    if(!string.isEmpty(refn) || !string.isEmpty(refType)){
        soql =label.ProviderSearchSOQL+' and id in (select DD_Provider__c from dd_Alternate_References__c where dd_Provider__c != null';   
         if (!refn.equals(''))
           soql += ' and dd_Reference_Number__c LIKE \'%'+String.escapeSingleQuotes(refn)+'%\'';
@@ -157,7 +164,7 @@ public with sharing class ProviderSearchController {
       }
    
     
-      if(!street.equals('') || !city.equals('')|| !state.equals('')|| !zip.equals('')|| !apt.equals('')|| !phone.equals('')){
+      if(!string.isEmpty(street) || !string.isEmpty(city)|| !string.isEmpty(state)|| !string.isEmpty(zip)|| !string.isEmpty(apt)|| !string.isEmpty(phone)){
        soql =label.ProviderSearchSOQL+' and id in (select dd_Provider__c from dd_Address__c where dd_Provider__c != null';
           if (!street.equals(''))
           soql += ' and Name LIKE \'%'+String.escapeSingleQuotes(street)+'%\'';
@@ -174,39 +181,39 @@ public with sharing class ProviderSearchController {
         soql += ') ';
       }
     
-      else if(!firstName.equals('') || !lastName.equals('') || !emrPro.equals('')){
+    if(!string.isEmpty(firstName) || !string.isEmpty(lastName)|| !string.isEmpty(emrPro)|| !string.isEmpty(gtf)){
+        if(soql == null || soql == '') soql =label.ProviderSearchSOQL;
         
-        soql =label.ProviderSearchSOQL;
-        if (!firstName.equals(''))
+        if (!string.isEmpty(firstName))
           soql += ' and dd_First_Name__c LIKE \'%'+String.escapeSingleQuotes(firstName)+'%\'';
-        if (!lastName.equals(''))
+        if (!string.isEmpty(lastName))
           soql +=  ' and name LIKE \'%'+String.escapeSingleQuotes(lastName)+'%\'';
-        if (!emrPro.equals(''))
+        if (!string.isEmpty(emrPro))
           soql +=  ' and dd_Emergency_Provider__c LIKE \'%'+String.escapeSingleQuotes(emrPro)+'%\'';
-        if (!gtf.equals(''))
+        if (!string.isEmpty(gtf))
           soql +=  ' and dd_GTF_Level__c LIKE \'%'+String.escapeSingleQuotes(gtf)+'%\'';
         
       }
       
       //Benny
-      else if(!licType.equals('') || !licNumber.equals('') || !accType.equals('')){
-          if(accType.equals('')){
+      else if(!string.isEmpty(licType) || !string.isEmpty(licNumber)|| !string.isEmpty(accType)){
+          if(!string.isEmpty(accType)){
               soql =label.ProviderSearchSOQL+' and id in (select DD_Service_Provider_Name__c from License__c where DD_Service_Provider_Name__c != null';
-                if (!licType.equals(''))
+                 if (!string.isEmpty(licType) )
                     soql += ' and DD_Type__c LIKE \'%'+String.escapeSingleQuotes(licType)+'%\'';
-                if (!licNumber.equals(''))
+                 if (!string.isEmpty(licNumber))
                     soql += ' and name LIKE \'%'+String.escapeSingleQuotes(licNumber)+'%\'';
-                if (!licEffFrom.equals(''))
+                 if (!string.isEmpty(licEffFrom))
                     soql += ' and DD_Effective_Date__c >= ' + licEffFrom;
-                if (!licEffTill.equals(''))
+                 if (!string.isEmpty(licEffTill))
                     soql += ' and DD_Effective_Date__c <= ' + licEffTill;
-                if (!licExpFrom.equals(''))
+                 if (!string.isEmpty(licExpFrom))
                     soql += ' and DD_Expiration_Date__c >= ' + licExpFrom;
-                if (!licExpTill.equals(''))
+                 if (!string.isEmpty(licExpTill))
                     soql += ' and DD_Expiration_Date__c <= ' + licExpTill;                
                 soql += ') ';
           }
-          else if(licType.equals('') && licNumber.equals('')){
+          else if(string.isEmpty(licType) && string.isEmpty(licNumber)){
               soql =label.ProviderSearchSOQL+' and id in (select DD_Service_Provider_Name__c from Accreditation__c where DD_Service_Provider_Name__c != null';
                 if (!accType.equals(''))
                     soql += ' and DD_Type__c LIKE \'%'+String.escapeSingleQuotes(accType)+'%\'';
@@ -259,68 +266,57 @@ public with sharing class ProviderSearchController {
 
     return null;
   }
+    public List<String> getPickValues(Sobject object_name, String field_name) {
+      List<String> options = new List<String>(); 
+      Schema.sObjectType sobject_type = object_name.getSObjectType(); 
+      Schema.DescribeSObjectResult sobject_describe = sobject_type.getDescribe(); 
+      Map<String, Schema.SObjectField> field_map = sobject_describe.fields.getMap(); 
+      List<Schema.PicklistEntry> pick_list_values = field_map.get(field_name).getDescribe().getPickListValues(); 
+      for (Schema.PicklistEntry a : pick_list_values) { 
+             options.add(a.getLabel()); 
+      }
+      return options; 
+}
     public  List<String> EmrgncyProVal
     { 
         get{
-           List<string> options = new List<string>();
-           Schema.DescribeFieldResult fieldResult = account.dd_Emergency_Provider__c.getDescribe();
-           for( Schema.PicklistEntry f : fieldResult.getPicklistValues())
-           {
-              options.add(f.getLabel());
-           }       
-           return options;
+            account acc = new account();
+            return getPickValues(acc,'dd_Emergency_Provider__c');
         }
        set;
     } 
     public  List<String> gtfLvl
     { 
         get{
-           List<string> options = new List<string>();
-           Schema.DescribeFieldResult fieldResult = account.dd_GTF_Level__c.getDescribe();
-           for( Schema.PicklistEntry f : fieldResult.getPicklistValues())
-           {
-              options.add(f.getLabel());
-           }       
-           return options;
+         
+            account acc = new account();
+            return getPickValues(acc,'dd_GTF_Level__c');
         }
        set;
     } 
     public  List<String> refType
     { 
-        get{
-           List<string> options = new List<string>();
-           Schema.DescribeFieldResult fieldResult = dd_Alternate_References__c.dd_Reference_Type__c.getDescribe();
-           for( Schema.PicklistEntry f : fieldResult.getPicklistValues())
-           {
-              options.add(f.getLabel());
-           }       
-           return options;
+        get{      
+            
+            dd_Alternate_References__c altRef = new dd_Alternate_References__c();
+            return getPickValues(altRef,'dd_Reference_Type__c');
         }
        set;
     }
     public  List<String> licTypeVal //Benny
         {
             get{
-               List<string> options = new List<string>();
-               Schema.DescribeFieldResult fieldResult = License__c.DD_Type__c.getDescribe();
-               for( Schema.PicklistEntry f : fieldResult.getPicklistValues())
-               {
-                  options.add(f.getLabel());
-               }       
-               return options;
+               
+                License__c lic = new License__c();
+                return getPickValues(lic,'DD_Type__c');
             }
            set;
     } 
     public  List<String> accTypeVal //Benny
         {
             get{
-               List<string> options = new List<string>();
-               Schema.DescribeFieldResult fieldResult = Accreditation__c.DD_Type__c.getDescribe();
-               for( Schema.PicklistEntry f : fieldResult.getPicklistValues())
-               {
-                  options.add(f.getLabel());
-               }       
-               return options;
+                Accreditation__c acc = new Accreditation__c();
+                return getPickValues(acc,'DD_Type__c');
             }
            set;
     }  
