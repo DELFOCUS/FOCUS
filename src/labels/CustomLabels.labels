@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
+        <fullName>OneSearchCriteria</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OneSearchCriteria</shortDescription>
+        <value>Please enter at least one search criteria</value>
+    </labels>
+    <labels>
         <fullName>OnlyNumeric</fullName>
         <language>en_US</language>
         <protected>false</protected>

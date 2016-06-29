@@ -78,7 +78,7 @@
                                         Divison
                                     </td>  
                                     <td>
-                                        <apex:selectList value="{!selectedDivision}" size="1">
+                                        <apex:selectList value="{!selectedDivision}" size="1" style="width: 100%;">
                                             <apex:selectOptions value="{!Divisions}"/>
                                         </apex:selectList>
                                     </td>          
@@ -88,7 +88,7 @@
                                         Residential/Non-Residential 
                                     </td>  
                                     <td>
-                                        <apex:selectList value="{!Resident}" size="1">
+                                        <apex:selectList value="{!Resident}" size="1" style="width: 100%;">
                                             <apex:selectOptions value="{!Residential}"/>
                                         </apex:selectList>
                                     </td>          
@@ -98,7 +98,7 @@
                                         Service Status 
                                     </td>  
                                     <td>
-                                        <apex:selectList value="{!serviceStat}" size="1">
+                                        <apex:selectList value="{!serviceStat}" size="1" style="width: 100%;">
                                             <apex:selectOptions value="{!Status}"/>
                                         </apex:selectList>
                                     </td>          
@@ -109,11 +109,12 @@
                 </table>   
                 </div>
                 <apex:commandButton value="Search" action="{!getMatchingRecords}" rerender="results,Errors,NoResults"/>
+                <apex:commandButton value="Reset" onclick="this.form.reset();return false;" rerender="dummy"/>
                 <apex:commandButton value="Create New" action="{!createNew}" rerender="dummy"/>
             </apex:pageBlock>  
             <apex:outputPanel id="results">
             <apex:pageBlock rendered="{!IF(ShowResults == 'Yes', true, false)}">
-            <div style="overflow: scroll; width: 70%; min-height: 200px;">  
+            <div style="min-height: 200px;">  
                 <apex:pageBlockTable value="{!serviceTaxonomies}" var="taxnomony" width="100%">
                     <apex:column >
                         <apex:facet name="header">
