@@ -2,10 +2,11 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <members>DEL_Git_TEST</members>
-        <members>ProviderSearchController</members>
+        
         <members>ProviderSearchController</members>
         <members>ProviderSearchController_Test</members>
         <members>TaxonomySearchCtrlTest</members>
+        <members>TaxonomySearchCtrl</members>
         <name>ApexClass</name>
     </types>
     <types>
