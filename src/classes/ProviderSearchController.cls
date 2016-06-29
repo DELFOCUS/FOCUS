@@ -197,7 +197,7 @@ public with sharing class ProviderSearchController {
       
       //Benny
       else if(!string.isEmpty(licType) || !string.isEmpty(licNumber)|| !string.isEmpty(accType)){
-          if(!string.isEmpty(accType)){
+          if(string.isEmpty(accType)){
               soql =label.ProviderSearchSOQL+' and id in (select DD_Service_Provider_Name__c from License__c where DD_Service_Provider_Name__c != null';
                  if (!string.isEmpty(licType) )
                     soql += ' and DD_Type__c LIKE \'%'+String.escapeSingleQuotes(licType)+'%\'';
