@@ -65,7 +65,7 @@
         <members>DD_Provider_Type__c-Provider Type Layout</members>
         <members>DD_Service_Taxonomy__c-Service Taxonomy Layout</members>
         <members>DD_Service_Taxonomy__c-Service Taxonomy Layout</members>
-        <members>License__c-License/Accreditation Layout</members>
+        <members>License__c-License%2FAccreditation Layout</members>
         <name>Layout</name>
     </types>
     <types>
