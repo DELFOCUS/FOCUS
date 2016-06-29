@@ -2,11 +2,10 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <members>DEL_Git_TEST</members>
-        
         <members>ProviderSearchController</members>
         <members>ProviderSearchController_Test</members>
-        <members>TaxonomySearchCtrlTest</members>
         <members>TaxonomySearchCtrl</members>
+        <members>TaxonomySearchCtrlTest</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -58,7 +57,7 @@
         <members>DD_Address__c-Address Layout</members>
         <members>DD_Alternate_References__c-Alternate Reference Layout</members>
         <members>DD_FSF_Chart_Fields__c-FSF_Chart_Fields Layout</members>
-        <members>DD_Inquiry__c-Intake Layout</members>
+        <members>DD_Inquiry__c-Inquiry Layout</members>
         <members>DD_Provider_Address__c-Provider Address Layout</members>
         <members>DD_Provider_Alias__c-Provider Alias Layout</members>
         <members>DD_Provider_NPI__c-Provider NPI Layout</members>
