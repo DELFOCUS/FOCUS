@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>*</members>
-        <name>StaticResource</name>
-    </types>
-    <types>
         <members>DEL_Git_TEST</members>
         <members>ProviderSearchController</members>
         <members>TaxonomySearchCtrl</members>
@@ -38,7 +34,6 @@
         <members>DD_Provider_Type__c</members>
         <members>DD_Service_Taxonomy__c</members>
         <members>License__c</members>
-        
         <name>CustomObject</name>
     </types>
     <types>
@@ -50,19 +45,20 @@
         <name>Flow</name>
     </types>
     <types>
+        <members>Account-Account Layout</members>
         <members>Account-FC Private Agency Layout</members>
         <members>Account-Foster Care Inquiry Layout</members>
         <members>Account-OCCL Provider Layout</members>
         <members>Account-Parent Organization Layout</members>
         <members>Account-Provider Entity Layout</members>
-        <members>DD_Service_Taxonomy__c-Service Taxonomy Layout</members>
-		<members>DD_FSF_Chart_Fields__c-FSF_Chart_Fields Layout</members>
+        <members>Accreditation__c-Accreditation Layout</members>
+        <members>DD_Address__c-Address Layout</members>
+        <members>DD_FSF_Chart_Fields__c-FSF_Chart_Fields Layout</members>
+        <members>DD_Inquiry__c-Inquiry Layout</members>
         <members>DD_Inquiry__c-Intake Layout</members>
         <members>DD_Service_Taxonomy__c-Service Taxonomy Layout</members>
-        <members>Accreditation__c-Accreditation Layout</members>
+        <members>DD_Service_Taxonomy__c-Service Taxonomy Layout</members>
         <members>License__c-License/Accreditation Layout</members>
-        <members>Account-Account Layout</members>
-        <members>DD_Address__c-Address Layout</members>
         <name>Layout</name>
     </types>
     <types>
@@ -70,8 +66,12 @@
         <name>MatchingRule</name>
     </types>
     <types>
+        <members>*</members>
+        <name>StaticResource</name>
+    </types>
+    <types>
         <members>DD_Provider_Type__c</members>
         <name>Workflow</name>
     </types>
-    <version>37.0</version>
+    <version>34.0</version>
 </Package>

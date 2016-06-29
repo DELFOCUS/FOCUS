@@ -20,12 +20,12 @@
                 <field>DD_Status__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>Name</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>DD_First_Name__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>Name</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -105,12 +105,6 @@
         <fields>DD_County__c</fields>
         <fields>DD_Country__c</fields>
         <relatedList>DD_Address__c.DD_Provider__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>DD_NPI_Text__c</fields>
-        <fields>DD_Active__c</fields>
-        <relatedList>DD_Provider_NPI__c.DD_Provider_Lookup__c</relatedList>
     </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>
