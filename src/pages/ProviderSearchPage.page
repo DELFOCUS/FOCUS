@@ -19,8 +19,7 @@
                                     <apex:pageBlock mode="edit" id="criteria" title="Provider Search">
                                        <script type="text/javascript">
                                           function doSearch() {
-                                          
-                                               var fname = document.getElementById("firstName").value;
+                                              var fname = document.getElementById("firstName").value;
                                               var lname = document.getElementById("lastName").value;
                                               var street = document.getElementById("street").value;
                                               var city = document.getElementById("city").value;
@@ -33,6 +32,7 @@
                                               var apt = document.getElementById("apt").value;
                                               var phone = document.getElementById("phone").value;
                                               var npi = document.getElementById("npi").value;
+                                              var fein = document.getElementById("fein").value;
                                           
                                               //Benny
                                               var licType = document.getElementById("licType").value;
@@ -50,7 +50,7 @@
                                               
                                               
                                               console.log('fname>'+fname+' refType '+refType); 
-                                              searchServer(fname , lname,street,city,emergencyPro,gtf,refn,refType,state,zip,apt,phone,npi,licType, //Benny
+                                              searchServer(fname , lname,street,city,emergencyPro,gtf,refn,refType,state,zip,apt,phone,npi,fein,licType, //Benny
                                                            licNumber,licEffFrom,licEffTill,licExpFrom,licExpTill,accType,accEffFrom,accEffTill,accExpFrom,accExpTill);
                                               
                                           
@@ -82,6 +82,7 @@
                                           <apex:param name="apt" value=""/>
                                           <apex:param name="phone" value=""/>
                                            <apex:param name="npi" value=""/>
+                                          <apex:param name="fein" value=""/>
                                           <!--Benny-->
                                           <apex:param name="licType" value=""/>
                                           <apex:param name="licNumber" value=""/>
@@ -126,11 +127,7 @@
                                                    </select>
                                                 </td>
                                              </tr>
-                                             <tr>
-                                                <td align="left">NPI #</td>
-                                                <td><input type="text" id="npi" />
-                                                </td>
-                                             </tr>
+                                             
                                              <tr>
                                                 <td align="left">GTF Level</td>
                                                 <td>
@@ -140,6 +137,16 @@
                                                          <option value="{!gtf}">{!gtf}</option>
                                                       </apex:repeat>
                                                    </select>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td align="left">NPI #</td>
+                                                <td><input type="text" id="npi" />
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td align="left">FEIN #</td>
+                                                <td><input type="text" id="fein" />
                                                 </td>
                                              </tr>
                                              <tr>

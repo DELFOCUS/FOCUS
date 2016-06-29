@@ -134,6 +134,7 @@ public with sharing class ProviderSearchController {
     String apt = Apexpages.currentPage().getParameters().get('apt');
     String phone = Apexpages.currentPage().getParameters().get('phone');
     String npi = Apexpages.currentPage().getParameters().get('npi');
+    String fein = Apexpages.currentPage().getParameters().get('fein');
     //Benny
     String licType = Apexpages.currentPage().getParameters().get('licType');
     String licNumber = Apexpages.currentPage().getParameters().get('licNumber');
@@ -147,7 +148,7 @@ public with sharing class ProviderSearchController {
     String accEffTill = Apexpages.currentPage().getParameters().get('accEffTill'); 
     String accExpFrom = Apexpages.currentPage().getParameters().get('accExpFrom'); 
     String accExpTill = Apexpages.currentPage().getParameters().get('accExpTill'); 
-    if(string.isEmpty(npi) && string.isEmpty(refn) && string.isEmpty(refType) && string.isEmpty(street) && string.isEmpty(city)&& string.isEmpty(state)&& string.isEmpty(zip)&& string.isEmpty(apt)&& string.isEmpty(phone) && string.isEmpty(firstName) && string.isEmpty(lastName)&& string.isEmpty(emrPro)&& string.isEmpty(gtf)&& string.isEmpty(licType) && string.isEmpty(licNumber)&& string.isEmpty(accType)){
+    if(string.isEmpty(fein) &&string.isEmpty(npi) && string.isEmpty(refn) && string.isEmpty(refType) && string.isEmpty(street) && string.isEmpty(city)&& string.isEmpty(state)&& string.isEmpty(zip)&& string.isEmpty(apt)&& string.isEmpty(phone) && string.isEmpty(firstName) && string.isEmpty(lastName)&& string.isEmpty(emrPro)&& string.isEmpty(gtf)&& string.isEmpty(licType) && string.isEmpty(licNumber)&& string.isEmpty(accType)){
       ApexPages.Message msg = new ApexPages.Message(ApexPages.Severity.Info, Label.OneSearchCriteria);
       ApexPages.addMessage(msg);
       return null;
@@ -185,7 +186,7 @@ public with sharing class ProviderSearchController {
         soql += ') ';
       }
     
-    if(!string.isEmpty(firstName) || !string.isEmpty(lastName)|| !string.isEmpty(emrPro)|| !string.isEmpty(gtf)){
+    if(!string.isEmpty(firstName) || !string.isEmpty(lastName)|| !string.isEmpty(emrPro)|| !string.isEmpty(gtf)||!string.isEmpty(fein)){
         if(soql == null || soql == '') soql =label.ProviderSearchSOQL;
         
         if (!string.isEmpty(firstName))
@@ -196,6 +197,8 @@ public with sharing class ProviderSearchController {
           soql +=  ' and dd_Emergency_Provider__c LIKE \'%'+String.escapeSingleQuotes(emrPro)+'%\'';
         if (!string.isEmpty(gtf))
           soql +=  ' and dd_GTF_Level__c LIKE \'%'+String.escapeSingleQuotes(gtf)+'%\'';
+        if (!string.isEmpty(fein))
+          soql +=  ' and DD_FEIN__c ='+fein;
         
       }
       
