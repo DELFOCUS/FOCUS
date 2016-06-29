@@ -1,567 +1,486 @@
 <apex:page controller="ProviderSearchController" sidebar="false">
-   <head>
-      <apex:includeScript value="{!URLFOR($Resource.jquery300)}"  />
-      <apex:stylesheet value="{!URLFOR($Resource.SLDS103, 'assets/styles/salesforce-lightning-design-system-vf.css')}" />
-      <apex:includeScript value="{!URLFOR($Resource.svg4everybody, 'svg4everybody-master/dist/svg4everybody.js')}" />
-   </head>
-   <body>
-      <div class="slds">
-         <div class="slds-grid">
-            <div class="slds-medium-size--12-of-12 slds-large-size--12-of-12">
-               <apex:form >
-                  <apex:pageMessages id="errors" />
-                  <apex:pageBlock title="Find Me A Provider!" mode="edit">
-                     <!--<div class="slds slds-grid"> -->
-                        <div class=" slds-large-size--12-of-12 ">
-                           <table border="0" cellpadding="0" cellspacing="0" width="100%" class="slds-table slds-table--bordered slds-table--cell-buffer slds-no-row-hover">
-                              <tr>
-                                 <td valign="top" height="70px">
-                                    <apex:pageBlock mode="edit" id="criteria" title="Provider Search">
-                                       <script type="text/javascript">
-                                          function doSearch() {
-                                          
-                                               var fname = document.getElementById("firstName").value;
-                                              var lname = document.getElementById("lastName").value;
-                                              var street = document.getElementById("street").value;
-                                              var city = document.getElementById("city").value;
-                                              var emergencyPro = document.getElementById("emrPro").options[document.getElementById("emrPro").selectedIndex].value
-                                              var gtf = document.getElementById("gtf").options[document.getElementById("gtf").selectedIndex].value
-                                              var refn = document.getElementById("refn").value;
-                                              var refType = document.getElementById("refType").options[document.getElementById("refType").selectedIndex].value
-                                              var state = document.getElementById("state").value;
-                                              var zip = document.getElementById("zip").value;
-                                              var apt = document.getElementById("apt").value;
-                                              var phone = document.getElementById("phone").value;
-                                          
-                                              //Benny
-                                              var licType = document.getElementById("licType").value;
-                                              var licNumber = document.getElementById("licNumber").value;
-                                              var licEffFrom = document.getElementById("licEffFrom").value;
-                                              var licEffTill = document.getElementById("licEffTill").value;
-                                              var licExpFrom = document.getElementById("licExpFrom").value;
-                                              var licExpTill = document.getElementById("licExpTill").value;
-                                              var accType = document.getElementById("accType").value;
-                                              var accEffFrom = document.getElementById("accEffFrom").value;
-                                              var accEffTill = document.getElementById("accEffTill").value;
-                                              var accExpFrom = document.getElementById("accExpFrom").value;
-                                              var accExpTill = document.getElementById("accExpTill").value;
-                                              
-                                              
-                                              
-                                              console.log('refn>'+refn+' refType '+refType); 
-                                              searchServer(fname , lname,street,city,emergencyPro,gtf,refn,refType,state,zip,apt,phone,licType, //Benny
-                                                           licNumber,licEffFrom,licEffTill,licExpFrom,licExpTill,accType,accEffFrom,accEffTill,accExpFrom,accExpTill);
-                                              
-                                          
-                                          }
-                                          function newProvider() {
-                                              var fname = document.getElementById("firstName").value;
-                                              var lname = document.getElementById("lastName").value;
-                                              var emergencyPro = document.getElementById("emrPro").options[document.getElementById("emrPro").selectedIndex].value
-                                              var gtf = document.getElementById("gtf").options[document.getElementById("gtf").selectedIndex].value
-                                              createNew(fname, lname, emergencyPro, gtf);
-                                          }
-                                          
-                                          function disableFields(){
-                                              disableFieldss();
-                                          }
-                                             
-                                       </script> 
-                                       <apex:actionFunction name="searchServer" action="{!runSearch}" rerender="results,debug,errors">
-                                          <apex:param name="firstName" value="" />
-                                          <apex:param name="lastName" value="" />
-                                          <apex:param name="street" value="" />
-                                          <apex:param name="city" value="" />
-                                          <apex:param name="emrPro" value="" />
-                                          <apex:param name="gtf" value="" />
-                                          <apex:param name="refn" value=""/>
-                                          <apex:param name="refType" value=""/>
-                                          <apex:param name="state" value=""/>
-                                          <apex:param name="zip" value=""/>
-                                          <apex:param name="apt" value=""/>
-                                          <apex:param name="phone" value=""/>
-                                          <!--Benny-->
-                                          <apex:param name="licType" value=""/>
-                                          <apex:param name="licNumber" value=""/>
-                                          <apex:param name="licEffFrom" value=""/>
-                                          <apex:param name="licEffTill" value=""/>
-                                          <apex:param name="licExpFrom" value=""/>
-                                          <apex:param name="licExpTill" value=""/>
-                                          <apex:param name="accType" value=""/>
-                                          <apex:param name="accEffFrom" value=""/>
-                                          <apex:param name="accEffTill" value=""/>
-                                          <apex:param name="accExpFrom" value=""/>
-                                          <apex:param name="accExpTill" value=""/>
-                                          <!--Benny-->
-                                       </apex:actionFunction>
-                                       <apex:actionFunction name="createNew" action="{!newProvider}" rerender="results,debug,errors">
-                                          <apex:param name="firstName" value=""/>
-                                          <apex:param name="lastName" value=""/>
-                                          <apex:param name="emrPro" value=""/>
-                                          <apex:param name="gtf" value=""/>
-                                       </apex:actionFunction>
-                                       <apex:actionFunction name="disableFieldss" action="{!methodOne}" rerender="results,debug,errors"/>
-                                       <div id="test">
-                                          <table class="slds-table slds-table--bordered slds-table--cell-buffer slds-no-row-hover">
-                                             <tr>
-                                                <td align="left">First Name </td>
-                                                <td> <input type="text" id="firstName" event="onchange" action="javascript: disableFields()"/>
-                                                </td>
-                                             </tr>
-                                             <tr>
-                                                <td align="left">Last Name</td>
-                                                <td><input type="text" id="lastName" />
-                                                </td>
-                                             </tr>
-                                             <tr>
-                                                <td align="left">Emergency Provider</td>
-                                                <td>
-                                                   <select id="emrPro" >
-                                                      <option value=""></option>
-                                                      <apex:repeat value="{!EmrgncyProVal}" var="emr">
-                                                         <option value="{!emr}">{!emr}</option>
-                                                      </apex:repeat>
-                                                   </select>
-                                                </td>
-                                             </tr>
-                                             <tr>
-                                                <td align="left">GTF Level</td>
-                                                <td>
-                                                   <select id="gtf" >
-                                                      <option value=""></option>
-                                                      <apex:repeat value="{!gtfLvl}" var="gtf">
-                                                         <option value="{!gtf}">{!gtf}</option>
-                                                      </apex:repeat>
-                                                   </select>
-                                                </td>
-                                             </tr>
-                                             <tr>
-                                                <td align="left">Reference Type</td>
-                                                <td>
-                                                   <select id="refType" >
-                                                      <option value=""></option>
-                                                      <apex:repeat value="{!refType}" var="ref">
-                                                         <option value="{!ref}">{!ref}</option>
-                                                      </apex:repeat>
-                                                   </select>
-                                                </td>
-                                             </tr>
-                                             <tr>
-                                                <td align="left"></td>
-                                                <td>
-                                                   <input type="refn" id="refn" />
-                                                </td>
-                                             </tr>
-                                          </table>
-                                       </div>
-                                    </apex:pageBlock>
-                                 </td>
-                                 <!-- </div> -->
-                                 <td valign="top">
-                                    <apex:pageBlock mode="edit" id="Addcriteria" title="Address Search">
-                                       <table class="slds-table slds-table--bordered slds-table--cell-buffer slds-no-row-hover">
-                                          <tr>
-                                             <td align="left">Street</td>
-                                             <td>
-                                                <input type="text" id="street" />
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td align="left">City</td>
-                                             <td>
-                                                <input type="text" id="city" />
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td align="left">State</td>
-                                             <td>
-                                                <input type="text" id="state" />
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td align="left">Zip Code</td>
-                                             <td>
-                                                <input type="text" id="zip" />
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td align="left">Suite / Apt</td>
-                                             <td>
-                                                <input type="text" id="apt" />
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td align="left">Phone</td>
-                                             <td>
-                                                <input type="text" id="phone" />
-                                             </td>
-                                          </tr>
-                                       </table>
-                                    </apex:pageBlock>
-                                 </td>
-                                 <td valign="top">
-                                    <apex:pageBlock mode="edit" id="relCriteria" title="Related Search">
-                                       <table class="slds-table slds-table--bordered slds-table--cell-buffer slds-no-row-hover">
-                                          <tr>
-                                             <td align="left">Provider Type</td>
-                                             <td>
-                                                <input type="text" id="street1" />
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td align="left">Status</td>
-                                             <td>
-                                                <input type="text" id="city1" />
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td align="left">Service Code </td>
-                                             <td>
-                                                <input type="text" id="state1" />
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td align="left">Service Description</td>
-                                             <td>
-                                                <input type="text" id="zip1" />
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td align="left">Parent Organization</td>
-                                             <td>
-                                                <input type="text" id="apt1" />
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td align="left">Alias</td>
-                                             <td>
-                                                <input type="text" id="phone1" />
-                                             </td>
-                                          </tr>
-                                       </table>
-                                    </apex:pageBlock>
-                                 </td>
-                                 <!--...........................................................Benny-->
-                                 <td valign="top">
-                                    <apex:pageBlock mode="edit" id="licCriteria" title="License/Accreditation Search">
-                                       <table class="slds-table slds-table--bordered slds-table--cell-buffer slds-no-row-hover">
-                                          <tr>
-                                             <td align="left">License Type</td>
-                                             <td>
-                                                <select id="licType" >
-                                                   <option value=""></option>
-                                                   <apex:repeat value="{!licTypeVal}" var="lic">
-                                                      <option value="{!lic}">{!lic}</option>
-                                                   </apex:repeat>
-                                                </select>
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td align="left">License#</td>
-                                             <td>
-                                                <input type="text" id="licNumber" />
-                                             </td>
-                                          </tr>
-                                          <!--<tr><td/><td>From</td><td>Till</td></tr>-->
-                                          <tr>
-                                             <td align="left">Effective Date </td>
-                                             <td>
-                                                <input type="date" format="dd/MM/yyyy" id="licEffFrom" />To 
-                                             </td>
-                                             <td>
-                                                <input type="date" id="licEffTill"/>
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td align="left">Expiration Date</td>
-                                             <td>
-                                                <input type="date" id="licExpFrom" />To
-                                             </td>
-                                             <td>
-                                                <input type="date" id="licExpTill" />
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td align="left">Accreditation Type</td>
-                                             <td>
-                                                <select id="accType" >
-                                                   <option value=""></option>
-                                                   <apex:repeat value="{!accTypeVal}" var="acc">
-                                                      <option value="{!acc}">{!acc}</option>
-                                                   </apex:repeat>
-                                                </select>
-                                             </td>
-                                          </tr>
-                                          <!--<tr><td/><td>From</td><td>Till</td></tr>-->
-                                          <tr>
-                                             <td align="left">Effective Date </td>
-                                             <td>
-                                                <input type="date" id="accEffFrom" />   To
-                                             </td>
-                                             <td>
-                                                <input type="date" id="accEffTill" />
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td align="left">Expiration Date</td>
-                                             <td>
-                                                <input type="date" id="accExpFrom" />To
-                                             </td>
-                                             <td>
-                                                <input type="date" id="accExpTill" />
-                                             </td>
-                                          </tr>
-                                       </table>
-                                    </apex:pageBlock>
-                                 </td>
-                                 <!--...........................................................Benny-->
-                              </tr>
-                              <tr align="center">
-                                 <!-- <table align="center"><tr>
-                                    <td><apex:commandButton value="Search" onclick="javascript: doSearch();" rerender="dummy"/>  </td> 
-                                    <td><apex:commandButton value="Clear"  rerender="results,debug"/>  </td> 
-                                    <td><apex:commandButton value="New Provider" onclick="javascript: newProvider();" rerender="results,debug"/>  </td> 
-                                    </tr></table> -->
-                                 <td colspan="4">
-                                    <div class="slds-button-group" role="group" style="display:table;margin: auto;">
-                                       <apex:commandButton value="Search" onclick="javascript: doSearch();" rerender="dummy"/>
-                                       <apex:commandButton value="Clear"  onclick="this.form.reset();return false;" rerender="results,debug"/>
-                                       <apex:commandButton value="New Provider" onclick="javascript: newProvider();" rerender="results,debug"/>
-                                    </div>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td valign="top" colspan="4">
-                                    <div class="Benny" style="height: 250px;overflow: auto;">
-                                       <script>
-                                          $(document).ready(function() {
-                                              $('.fixme').fixheadertable({
-                                                   caption : 'My header is fixed !',
-                                                   height  : 200
-                                              });
-                                          });
-                                       </script> 
-                                       <apex:pageBlock mode="edit" id="results">
-                                          <apex:pageBlockTable value="{!providers}" var="provider" width="100%" styleclass="fixme">
-                                             <!-- styleclass="slds-table slds-table--bordered slds-table--cell-buffer slds-table--fixed-layout" > -->
-                                             <!-- <apex:column >
-                                                <apex:facet name="header">
-                                                    <apex:commandLink value="ID" action="{!toggleSort}" rerender="results,debug">
-                                                        <apex:param name="sortField" value="ID" assignTo="{!sortField}"/>
-                                                    </apex:commandLink>
-                                                </apex:facet>
-                                                <apex:outputLink value="{!URLFOR($Action.Account.View, provider.id)}">
-                                                    {!provider.id}
-                                                </apex:outputLink>
-                                                
-                                                </apex:column>-->
-                                             <!-- <apex:dataTable > -->
-                                             <apex:column >
-                                                <apex:facet name="header" >
-                                                   <apex:commandLink value="Entity/Last Name" action="{!toggleSort}" rerender="results,debug">
-                                                      <apex:param name="sortField" value="lastName" assignTo="{!sortField}"/>
-                                                   </apex:commandLink>
-                                                </apex:facet>
-                                                <apex:outputLink value="{!URLFOR($Action.Account.View, provider.id)}">
-                                                   {!provider.name}
-                                                </apex:outputLink>
-                                             </apex:column>
-                                             <apex:column >
-                                                <apex:facet name="header">
-                                                   <apex:commandLink value="First Name" action="{!toggleSort}" rerender="results,debug">
-                                                      <apex:param name="sortField" value="firstName" assignTo="{!sortField}"/>
-                                                   </apex:commandLink>
-                                                </apex:facet>
-                                                <apex:outputLink value="{!URLFOR($Action.Account.View, provider.id)}">
-                                                   {!provider.DD_First_Name__c}
-                                                </apex:outputLink>
-                                             </apex:column>
-                                             <apex:column >
-                                                <apex:facet name="header">
-                                                   <apex:commandLink value="Provider ID" action="{!toggleSort}" rerender="results,debug">
-                                                      <apex:param name="sortField" value="proID" assignTo="{!gtf}"/>
-                                                   </apex:commandLink>
-                                                </apex:facet>
-                                                <apex:outputField value="{!provider.DD_Provider_Id__c}"/>
-                                             </apex:column>
-                                             <apex:column >
-                                                <apex:facet name="header">
-                                                   <apex:commandLink value="FEIN" action="{!toggleSort}" rerender="results,debug">
-                                                      <apex:param name="sortField" value="fein" assignTo="{!fein}"/>
-                                                   </apex:commandLink>
-                                                </apex:facet>
-                                                <apex:outputField value="{!provider.DD_FEIN__c}"/>
-                                             </apex:column>
-                                             <apex:column >
-                                                <apex:facet name="header">
-                                                   <apex:commandLink value="Status" action="{!toggleSort}" rerender="results,debug">
-                                                      <apex:param name="sortField" value="status" assignTo="{!gtf}"/>
-                                                   </apex:commandLink>
-                                                </apex:facet>
-                                                <apex:outputField value="{!provider.DD_Status__c}"/>
-                                             </apex:column>
-                                             <apex:column >
-                                                <apex:facet name="header">
-                                                   <apex:commandLink value="Emr Pro" action="{!toggleSort}" rerender="results,debug">
-                                                      <apex:param name="sortField" value="emrPro" assignTo="{!sortField}"/>
-                                                   </apex:commandLink>
-                                                </apex:facet>
-                                                <apex:outputField value="{!provider.DD_Emergency_Provider__c}"/>
-                                             </apex:column>
-                                             <apex:column >
-                                                <apex:facet name="header">
-                                                   <apex:commandLink value="GTF" action="{!toggleSort}" rerender="results,debug">
-                                                      <apex:param name="sortField" value="gtf" assignTo="{!gtf}"/>
-                                                   </apex:commandLink>
-                                                </apex:facet>
-                                                <apex:outputField value="{!provider.DD_GTF_Level__c}"/>
-                                             </apex:column>
-                                             <apex:column rendered="{!If($CurrentPage.parameters.city!=null,true,false)}">
-                                                <apex:facet name="header">
-                                                   <apex:commandLink value="City" action="{!toggleSort}" rerender="results,debug">
-                                                      <apex:param name="sortField" value="city" assignTo="{!sortField}"/>
-                                                   </apex:commandLink>
-                                                </apex:facet>
-                                                <apex:outputPanel rendered="{!IF( provider.DEL_Provider_Addresses__r != null && provider.DEL_Provider_Addresses__r.size > 0,true, false)}">
-                                                   <apex:outputText value="{!provider.DEL_Provider_Addresses__r[0].DD_City__c}"/>
-                                                </apex:outputPanel>
-                                             </apex:column>
-                                             <apex:column rendered="{!If($CurrentPage.parameters.street!=null,true,false)}">
-                                                <apex:facet name="header">
-                                                   <apex:commandLink value="Street" action="{!toggleSort}" rerender="results,debug">
-                                                      <apex:param name="sortField" value="street" assignTo="{!sortField}"/>
-                                                   </apex:commandLink>
-                                                </apex:facet>
-                                                <apex:outputPanel rendered="{!IF( provider.DEL_Provider_Addresses__r != null && provider.DEL_Provider_Addresses__r.size > 0,true, false)}">
-                                                   <apex:outputText value="{!provider.DEL_Provider_Addresses__r[0].Name}"/>
-                                                </apex:outputPanel>
-                                             </apex:column>
-                                             <apex:column rendered="{!If($CurrentPage.parameters.state!=null,true,false)}">
-                                                <apex:facet name="header">
-                                                   <apex:commandLink value="Street" action="{!toggleSort}" rerender="results,debug">
-                                                      <apex:param name="sortField" value="state" assignTo="{!sortField}"/>
-                                                   </apex:commandLink>
-                                                </apex:facet>
-                                                <apex:outputPanel rendered="{!IF( provider.DEL_Provider_Addresses__r != null && provider.DEL_Provider_Addresses__r.size > 0,true, false)}">
-                                                   <apex:outputText value="{!provider.DEL_Provider_Addresses__r[0].DD_State__c}"/>
-                                                </apex:outputPanel>
-                                             </apex:column>
-                                             <apex:column rendered="{!If($CurrentPage.parameters.phone!=null,true,false)}">
-                                                <apex:facet name="header">
-                                                   <apex:commandLink value="Phone" action="{!toggleSort}" rerender="results,debug">
-                                                      <apex:param name="sortField" value="phone" assignTo="{!sortField}"/>
-                                                   </apex:commandLink>
-                                                </apex:facet>
-                                                <apex:outputPanel rendered="{!IF( provider.DEL_Provider_Addresses__r != null && provider.DEL_Provider_Addresses__r.size > 0,true, false)}">
-                                                   <apex:outputText value="{!provider.DEL_Provider_Addresses__r[0].DD_Phone__c}"/>
-                                                </apex:outputPanel>
-                                             </apex:column>
-                                             <apex:column rendered="{!If($CurrentPage.parameters.zip!=null,true,false)}">
-                                                <apex:facet name="header">
-                                                   <apex:commandLink value="Zip Code" action="{!toggleSort}" rerender="results,debug">
-                                                      <apex:param name="sortField" value="zip" assignTo="{!sortField}"/>
-                                                   </apex:commandLink>
-                                                </apex:facet>
-                                                <apex:outputPanel rendered="{!IF( provider.DEL_Provider_Addresses__r != null && provider.DEL_Provider_Addresses__r.size > 0,true, false)}">
-                                                   <apex:outputText value="{!provider.DEL_Provider_Addresses__r[0].DD_Zip_Code__c}"/>
-                                                </apex:outputPanel>
-                                             </apex:column>
-                                             <apex:column rendered="{!If($CurrentPage.parameters.apt!=null,true,false)}">
-                                                <apex:facet name="header">
-                                                   <apex:commandLink value="Apartment" action="{!toggleSort}" rerender="results,debug">
-                                                      <apex:param name="sortField" value="apt" assignTo="{!sortField}"/>
-                                                   </apex:commandLink>
-                                                </apex:facet>
-                                                <apex:outputPanel rendered="{!IF( provider.DEL_Provider_Addresses__r != null && provider.DEL_Provider_Addresses__r.size > 0,true, false)}">
-                                                   <apex:outputText value="{!provider.DEL_Provider_Addresses__r[0].DD_Apartment_Number__c}"/>
-                                                </apex:outputPanel>
-                                             </apex:column>
-                                             <apex:column rendered="{!If($CurrentPage.parameters.licType!=null,true,false)}">
-                                                <apex:facet name="header">
-                                                   <apex:commandLink value="License Type" action="{!toggleSort}" rerender="results,debug">
-                                                      <apex:param name="sortField" value="licType" assignTo="{!sortField}"/>
-                                                   </apex:commandLink>
-                                                </apex:facet>
-                                                <apex:outputPanel rendered="{!IF( provider.Licenses__r != null && provider.Licenses__r.size > 0,true, false)}">
-                                                   <apex:outputText value="{!provider.Licenses__r[0].dd_type__c}"/>
-                                                </apex:outputPanel>
-                                             </apex:column>
-                                             <apex:column rendered="{!If($CurrentPage.parameters.licNumber!=null,true,false)}">
-                                                <apex:facet name="header">
-                                                   <apex:commandLink value="License #" action="{!toggleSort}" rerender="results,debug">
-                                                      <apex:param name="sortField" value="licNumber" assignTo="{!sortField}"/>
-                                                   </apex:commandLink>
-                                                </apex:facet>
-                                                <apex:outputPanel rendered="{!IF( provider.Licenses__r != null && provider.Licenses__r.size > 0,true, false)}">
-                                                   <apex:outputText value="{!provider.Licenses__r[0].name}"/>
-                                                </apex:outputPanel>
-                                             </apex:column>
-                                             <apex:column rendered="{!If($CurrentPage.parameters.licEffFrom!=null,true,false)}">
-                                                <apex:facet name="header">
-                                                   <apex:commandLink value="License Effective Date" action="{!toggleSort}" rerender="results,debug">
-                                                      <apex:param name="sortField" value="licEffFrom" assignTo="{!sortField}"/>
-                                                   </apex:commandLink>
-                                                </apex:facet>
-                                                <apex:outputPanel rendered="{!IF( provider.Licenses__r != null && provider.Licenses__r.size > 0,true, false)}">
-                                                   <apex:outputText value="{!provider.Licenses__r[0].dd_effective_date__c}"/>
-                                                </apex:outputPanel>
-                                             </apex:column>
-                                             <apex:column rendered="{!If($CurrentPage.parameters.licExpFrom!=null,true,false)}">
-                                                <apex:facet name="header">
-                                                   <apex:commandLink value="License Expiration Date" action="{!toggleSort}" rerender="results,debug">
-                                                      <apex:param name="sortField" value="licExpFrom" assignTo="{!sortField}"/>
-                                                   </apex:commandLink>
-                                                </apex:facet>
-                                                <apex:outputPanel rendered="{!IF( provider.Licenses__r != null && provider.Licenses__r.size > 0,true, false)}">
-                                                   <apex:outputText value="{!provider.Licenses__r[0].dd_expiration_date__c}"/>
-                                                </apex:outputPanel>
-                                             </apex:column>
-                                             <apex:column rendered="{!If($CurrentPage.parameters.accType!=null,true,false)}">
-                                                <apex:facet name="header">
-                                                   <apex:commandLink value="Accreditation Type" action="{!toggleSort}" rerender="results,debug">
-                                                      <apex:param name="sortField" value="accType" assignTo="{!sortField}"/>
-                                                   </apex:commandLink>
-                                                </apex:facet>
-                                                <apex:outputPanel rendered="{!IF( provider.Accreditations__r != null && provider.Accreditations__r.size > 0,true, false)}">
-                                                   <apex:outputText value="{!provider.Accreditations__r[0].dd_type__c}"/>
-                                                </apex:outputPanel>
-                                             </apex:column>
-                                             <apex:column rendered="{!If($CurrentPage.parameters.accEffFrom!=null,true,false)}">
-                                                <apex:facet name="header">
-                                                   <apex:commandLink value="Accreditation Effective Date" action="{!toggleSort}" rerender="results,debug">
-                                                      <apex:param name="sortField" value="accEffFrom" assignTo="{!sortField}"/>
-                                                   </apex:commandLink>
-                                                </apex:facet>
-                                                <apex:outputPanel rendered="{!IF( provider.Accreditations__r != null && provider.Accreditations__r.size > 0,true, false)}">
-                                                   <apex:outputText value="{!provider.Accreditations__r[0].dd_effective_date__c}"/>
-                                                </apex:outputPanel>
-                                             </apex:column>
-                                             <apex:column rendered="{!If($CurrentPage.parameters.accExpFrom!=null,true,false)}">
-                                                <apex:facet name="header">
-                                                   <apex:commandLink value="Accreditation Expiration Date" action="{!toggleSort}" rerender="results,debug">
-                                                      <apex:param name="sortField" value="accExpFrom" assignTo="{!sortField}"/>
-                                                   </apex:commandLink>
-                                                </apex:facet>
-                                                <apex:outputPanel rendered="{!IF( provider.Accreditations__r != null && provider.Accreditations__r.size > 0,true, false)}">
-                                                   <apex:outputText value="{!provider.Accreditations__r[0].dd_expiration_date__c}"/>
-                                                </apex:outputPanel>
-                                             </apex:column>
-                                             <!-- </apex:dataTable> -->
-                                          </apex:pageBlockTable>
-                                       </apex:pageBlock>
-                                    </div>
-                                 </td>
-                              </tr>
-                           </table>
-                        </div>
-                     <!--</div>
-                     <apex:pageBlock title="Debug - SOQL" id="debug">
-                        <apex:outputText value="{!debugSoql}" /><br/><br/><apex:outputText value="{!debugSoql2}" />      
-                        </apex:pageBlock>  -->  
-                  </apex:pageBlock>
-               </apex:form>
-            </div>
-         </div>
-      </div>
-   </body>
+  
+    <apex:form >
+  <apex:pageMessages id="errors" />
+ 
+  <apex:pageBlock title="Find Me A Provider!" mode="edit">
+  
+  <table width="100%" border="0">
+  <tr>  
+    <td width="37%" valign="top">
+
+      <apex:pageBlock mode="edit" id="criteria" title="Provider Search">
+      
+      <script type="text/javascript">
+      function doSearch() {
+      
+           var fname = document.getElementById("firstName").value;
+          var lname = document.getElementById("lastName").value;
+          var street = document.getElementById("street").value;
+          var city = document.getElementById("city").value;
+          var emergencyPro = document.getElementById("emrPro").options[document.getElementById("emrPro").selectedIndex].value
+          var gtf = document.getElementById("gtf").options[document.getElementById("gtf").selectedIndex].value
+          var refn = document.getElementById("refn").value;
+          var refType = document.getElementById("refType").options[document.getElementById("refType").selectedIndex].value
+          var state = document.getElementById("state").value;
+          var zip = document.getElementById("zip").value;
+          var apt = document.getElementById("apt").value;
+          var phone = document.getElementById("phone").value;
+
+          //Benny
+          var licType = document.getElementById("licType").value;
+          var licNumber = document.getElementById("licNumber").value;
+          var licEffFrom = document.getElementById("licEffFrom").value;
+          var licEffTill = document.getElementById("licEffTill").value;
+          var licExpFrom = document.getElementById("licExpFrom").value;
+          var licExpTill = document.getElementById("licExpTill").value;
+          var accType = document.getElementById("accType").value;
+          var accEffFrom = document.getElementById("accEffFrom").value;
+          var accEffTill = document.getElementById("accEffTill").value;
+          var accExpFrom = document.getElementById("accExpFrom").value;
+          var accExpTill = document.getElementById("accExpTill").value;
+          
+          
+          
+          console.log('refn>'+refn+' refType '+refType); 
+          searchServer(fname , lname,street,city,emergencyPro,gtf,refn,refType,state,zip,apt,phone,licType, //Benny
+                       licNumber,licEffFrom,licEffTill,licExpFrom,licExpTill,accType,accEffFrom,accEffTill,accExpFrom,accExpTill);
+          
+     
+      }
+      function newProvider() {
+          var fname = document.getElementById("firstName").value;
+          var lname = document.getElementById("lastName").value;
+          var emergencyPro = document.getElementById("emrPro").options[document.getElementById("emrPro").selectedIndex].value
+          var gtf = document.getElementById("gtf").options[document.getElementById("gtf").selectedIndex].value
+          createNew(fname, lname, emergencyPro, gtf);
+      }
+         
+      </script> 
+
+      <apex:actionFunction name="searchServer" action="{!runSearch}" rerender="results,debug,errors">
+          <apex:param name="firstName" value="" />
+          <apex:param name="lastName" value="" />
+          <apex:param name="street" value="" />
+          <apex:param name="city" value="" />
+          <apex:param name="emrPro" value="" />
+          <apex:param name="gtf" value="" />
+          <apex:param name="refn" value=""/>
+          <apex:param name="refType" value=""/>
+          <apex:param name="state" value=""/>
+          <apex:param name="zip" value=""/>
+          <apex:param name="apt" value=""/>
+          <apex:param name="phone" value=""/>
+          <!--Benny-->
+          <apex:param name="licType" value=""/>
+          <apex:param name="licNumber" value=""/>
+          <apex:param name="licEffFrom" value=""/>
+          <apex:param name="licEffTill" value=""/>
+          <apex:param name="licExpFrom" value=""/>
+          <apex:param name="licExpTill" value=""/>
+          <apex:param name="accType" value=""/>
+          <apex:param name="accEffFrom" value=""/>
+          <apex:param name="accEffTill" value=""/>
+          <apex:param name="accExpFrom" value=""/>
+          <apex:param name="accExpTill" value=""/>
+          <!--Benny-->
+       </apex:actionFunction>
+       <apex:actionFunction name="createNew" action="{!newProvider}" rerender="results,debug,errors">
+          <apex:param name="firstName" value=""/>
+          <apex:param name="lastName" value=""/>
+          <apex:param name="emrPro" value=""/>
+          <apex:param name="gtf" value=""/>
+       </apex:actionFunction> 
+
+      <div id="test">
+          <table >
+          <tr>
+            <td align="left">First Name </td>
+            <td> <input type="text" id="firstName" />
+              </td>
+            
+          </tr>
+          <tr>
+            <td align="left">Last Name</td>
+             <td><input type="text" id="lastName" />
+            </td>
+          </tr>
+          <tr>
+            <td align="left">Emergency Provider</td>
+             <td>
+              <select id="emrPro" >
+                <option value=""></option>
+                <apex:repeat value="{!EmrgncyProVal}" var="emr">
+                  <option value="{!emr}">{!emr}</option>
+                </apex:repeat>
+              </select>
+            </td>
+          </tr>
+           <tr>
+            <td align="left">GTF Level</td>
+             <td>
+              <select id="gtf" >
+                <option value=""></option>
+                <apex:repeat value="{!gtfLvl}" var="gtf">
+                  <option value="{!gtf}">{!gtf}</option>
+                </apex:repeat>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td align="left">Reference Type</td>
+             <td>
+              <select id="refType" >
+                <option value=""></option>
+                <apex:repeat value="{!refType}" var="ref">
+                  <option value="{!ref}">{!ref}</option>
+                </apex:repeat>
+                  <input type="refn" id="refn" />
+              </select>
+            </td>
+          </tr>
+          
+        
+          </table>
+     </div>
+          
+   
+     
+          
+          
+      </apex:pageBlock>
+
+    </td>
+      
+    <td><apex:pageBlock mode="edit" id="Addcriteria" title="Address Search">
+        <table >
+          <tr>
+            <td align="left">Street</td>
+             <td>
+             <input type="text" id="street" />
+            </td>
+          </tr>
+          <tr>
+            <td align="left">City</td>
+             <td>
+             <input type="text" id="city" />
+            </td>
+          </tr>
+            <tr>
+            <td align="left">State</td>
+             <td>
+             <input type="text" id="state" />
+            </td>
+          </tr>
+            <tr>
+            <td align="left">Zip Code</td>
+             <td>
+             <input type="text" id="zip" />
+            </td>
+          </tr>
+             <tr>
+            <td align="left">Suite / Apt</td>
+             <td>
+             <input type="text" id="apt" />
+            </td>
+          </tr>
+          <tr>
+            <td align="left">Phone</td>
+             <td>
+             <input type="text" id="phone" />
+            </td>
+          </tr>
+            
+
+        </table></apex:pageBlock>
+    </td>
+   <td><apex:pageBlock mode="edit" id="relCriteria" title="Related Search">
+        <table >
+          <tr>
+            <td align="left">Provider Type</td>
+             <td>
+             <input type="text" id="street1" />
+            </td>
+          </tr>
+          <tr>
+            <td align="left">Status</td>
+             <td>
+             <input type="text" id="city1" />
+            </td>
+          </tr>
+            <tr>
+            <td align="left">Service Code </td>
+             <td>
+             <input type="text" id="state1" />
+            </td>
+          </tr>
+            <tr>
+            <td align="left">Service Description</td>
+             <td>
+             <input type="text" id="zip1" />
+            </td>
+          </tr>
+             <tr>
+            <td align="left">Parent Organization</td>
+             <td>
+             <input type="text" id="apt1" />
+            </td>
+          </tr>
+          <tr>
+            <td align="left">Alias</td>
+             <td>
+             <input type="text" id="phone1" />
+            </td>
+          </tr>
+            
+
+        </table></apex:pageBlock>
+    </td>
+
+
+
+    <!--...........................................................Benny-->
+
+    <td><apex:pageBlock mode="edit" id="licCriteria" title="License/Accreditation Search">
+        <table >
+          <tr>
+            <td align="left">License Type</td>
+             <td>
+                 <select id="licType" >
+                <option value=""></option>
+                <apex:repeat value="{!licTypeVal}" var="lic">
+                  <option value="{!lic}">{!lic}</option>
+                </apex:repeat>
+              </select>             
+            </td>
+          </tr>
+          <tr>
+            <td align="left">License#</td>
+             <td>
+             <input type="text" id="licNumber" />
+            </td>
+          </tr>
+            <!--<tr><td/><td>From</td><td>Till</td></tr>-->
+            <tr>
+            <td align="left">Effective Date </td>
+             <td>
+             <input type="date" format="dd/MM/yyyy" id="licEffFrom" />To 
+            </td>
+                <td>
+             <input type="date" id="licEffTill"/>
+            </td>
+          </tr>
+            <tr>
+            <td align="left">Expiration Date</td>
+             <td>
+             <input type="date" id="licExpFrom" />To
+            </td>
+                <td>
+             <input type="date" id="licExpTill" />
+            </td>
+
+          </tr>
+             <tr>
+            <td align="left">Accreditation Type</td>
+             <td>
+                 <select id="accType" >
+                <option value=""></option>
+                <apex:repeat value="{!accTypeVal}" var="acc">
+                  <option value="{!acc}">{!acc}</option>
+                </apex:repeat>
+              </select>             
+            </td>
+          </tr>
+            <!--<tr><td/><td>From</td><td>Till</td></tr>-->
+            <tr>
+            <td align="left">Effective Date </td>
+             <td>
+             <input type="date" id="accEffFrom" />To
+            </td>  
+                <td>
+             <input type="date" id="accEffTill" />
+            </td>
+          </tr>
+            <tr>
+            <td align="left">Expiration Date</td>
+             <td>
+             <input type="date" id="accExpFrom" />To
+            </td>
+                <td>
+             <input type="date" id="accExpTill" />
+            </td>
+
+          </tr>
+            
+
+        </table></apex:pageBlock>
+    </td>
+      
+    <!--...........................................................Benny-->
+      
+
+
+
+
+
+      </tr>
+  
+  <tr align="center">
+      <table align="center"><tr>
+      <td><apex:commandButton value="Search" onclick="javascript: doSearch();" rerender="dummy"/>  </td> 
+      <td><apex:commandButton value="Clear"  rerender="results,debug"/>  </td> 
+      <td><apex:commandButton value="New Provider" onclick="javascript: newProvider();" rerender="results,debug"/>  </td> 
+      </tr></table>
+      
+      
+  </tr>
+      
+  
+  <tr>
+    <td valign="top">
+
+    <apex:pageBlock mode="edit" id="results">
+    
+  
+        <apex:pageBlockTable value="{!providers}" var="provider" width="100%">
+           <!-- <apex:column >
+                <apex:facet name="header">
+                    <apex:commandLink value="ID" action="{!toggleSort}" rerender="results,debug">
+                        <apex:param name="sortField" value="ID" assignTo="{!sortField}"/>
+                    </apex:commandLink>
+                </apex:facet>
+                <apex:outputLink value="{!URLFOR($Action.Account.View, provider.id)}">
+                    {!provider.id}
+                </apex:outputLink>
+               
+            </apex:column>-->
+            <apex:column >
+                <apex:facet name="header">
+                    <apex:commandLink value="First Name" action="{!toggleSort}" rerender="results,debug">
+                        <apex:param name="sortField" value="firstName" assignTo="{!sortField}"/>
+                    </apex:commandLink>
+                </apex:facet>
+                <apex:outputLink value="{!URLFOR($Action.Account.View, provider.id)}">
+                    {!provider.DD_First_Name__c}
+                </apex:outputLink>
+               
+            </apex:column>
+
+            <apex:column >
+                <apex:facet name="header">
+                    <apex:commandLink value="Last Name" action="{!toggleSort}" rerender="results,debug">
+                        <apex:param name="sortField" value="lastName" assignTo="{!sortField}"/>
+                    </apex:commandLink>
+                </apex:facet>
+                <apex:outputLink value="{!URLFOR($Action.Account.View, provider.id)}">
+                    {!provider.DD_Last_Name__c}
+                </apex:outputLink>
+                
+            </apex:column>
+            <apex:column >
+                <apex:facet name="header">
+                    <apex:commandLink value="Emr Pro" action="{!toggleSort}" rerender="results,debug">
+                        <apex:param name="sortField" value="emrPro" assignTo="{!sortField}"/>
+                    </apex:commandLink>
+                </apex:facet>
+                <apex:outputField value="{!provider.DD_Emergency_Provider__c}"/>
+            </apex:column>
+            <apex:column >
+                <apex:facet name="header">
+                    <apex:commandLink value="GTF" action="{!toggleSort}" rerender="results,debug">
+                        <apex:param name="sortField" value="gtf" assignTo="{!gtf}"/>
+                    </apex:commandLink>
+                </apex:facet>
+                <apex:outputField value="{!provider.DD_GTF_Level__c}"/>
+            </apex:column>
+            <apex:column rendered="{!If($CurrentPage.parameters.city!=null,true,false)}">
+                <apex:facet name="header">
+                  <apex:commandLink value="City" action="{!toggleSort}" rerender="results,debug">
+                        <apex:param name="sortField" value="city" assignTo="{!sortField}"/>
+                    </apex:commandLink>  
+                </apex:facet>
+                <apex:outputPanel rendered="{!IF( provider.DEL_Provider_Addresses__r != null && provider.DEL_Provider_Addresses__r.size > 0,true, false)}">
+                    <apex:outputText value="{!provider.DEL_Provider_Addresses__r[0].DD_City__c}"/>
+                </apex:outputPanel>
+            </apex:column>
+            <apex:column rendered="{!If($CurrentPage.parameters.street!=null,true,false)}">
+                <apex:facet name="header">
+                    <apex:commandLink value="Street" action="{!toggleSort}" rerender="results,debug">
+                        <apex:param name="sortField" value="street" assignTo="{!sortField}"/>
+                    </apex:commandLink>
+                 </apex:facet>
+                 <apex:outputPanel rendered="{!IF( provider.DEL_Provider_Addresses__r != null && provider.DEL_Provider_Addresses__r.size > 0,true, false)}">
+                    <apex:outputText value="{!provider.DEL_Provider_Addresses__r[0].Name}"/>
+                </apex:outputPanel>
+            </apex:column>
+            <apex:column rendered="{!If($CurrentPage.parameters.state!=null,true,false)}">
+                <apex:facet name="header">
+                    <apex:commandLink value="Street" action="{!toggleSort}" rerender="results,debug">
+                        <apex:param name="sortField" value="state" assignTo="{!sortField}"/>
+                    </apex:commandLink>
+                 </apex:facet>
+                 <apex:outputPanel rendered="{!IF( provider.DEL_Provider_Addresses__r != null && provider.DEL_Provider_Addresses__r.size > 0,true, false)}">
+                    <apex:outputText value="{!provider.DEL_Provider_Addresses__r[0].DD_State__c}"/>
+                </apex:outputPanel>
+            </apex:column>
+            <apex:column rendered="{!If($CurrentPage.parameters.phone!=null,true,false)}">
+                <apex:facet name="header">
+                    <apex:commandLink value="Phone" action="{!toggleSort}" rerender="results,debug">
+                        <apex:param name="sortField" value="phone" assignTo="{!sortField}"/>
+                    </apex:commandLink>
+                 </apex:facet>
+                 <apex:outputPanel rendered="{!IF( provider.DEL_Provider_Addresses__r != null && provider.DEL_Provider_Addresses__r.size > 0,true, false)}">
+                    <apex:outputText value="{!provider.DEL_Provider_Addresses__r[0].DD_Phone__c}"/>
+                </apex:outputPanel>
+            </apex:column>
+            <apex:column rendered="{!If($CurrentPage.parameters.zip!=null,true,false)}">
+                <apex:facet name="header">
+                    <apex:commandLink value="Zip Code" action="{!toggleSort}" rerender="results,debug">
+                        <apex:param name="sortField" value="zip" assignTo="{!sortField}"/>
+                    </apex:commandLink>
+                 </apex:facet>
+                 <apex:outputPanel rendered="{!IF( provider.DEL_Provider_Addresses__r != null && provider.DEL_Provider_Addresses__r.size > 0,true, false)}">
+                    <apex:outputText value="{!provider.DEL_Provider_Addresses__r[0].DD_Zip_Code__c}"/>
+                </apex:outputPanel>
+            </apex:column>
+            <apex:column rendered="{!If($CurrentPage.parameters.apt!=null,true,false)}">
+                <apex:facet name="header">
+                    <apex:commandLink value="Apartment" action="{!toggleSort}" rerender="results,debug">
+                        <apex:param name="sortField" value="apt" assignTo="{!sortField}"/>
+                    </apex:commandLink>
+                 </apex:facet>
+                 <apex:outputPanel rendered="{!IF( provider.DEL_Provider_Addresses__r != null && provider.DEL_Provider_Addresses__r.size > 0,true, false)}">
+                    <apex:outputText value="{!provider.DEL_Provider_Addresses__r[0].DD_Apartment_Number__c}"/>
+                </apex:outputPanel>
+            </apex:column>
+    <apex:column rendered="{!If($CurrentPage.parameters.licNumber!=null,true,false)}">
+                <apex:facet name="header">
+                    <apex:commandLink value="License #" action="{!toggleSort}" rerender="results,debug">
+                        <apex:param name="sortField" value="licNumber" assignTo="{!sortField}"/>
+                    </apex:commandLink>
+                 </apex:facet>
+                 <apex:outputPanel rendered="{!IF( provider.Licenses__r != null && provider.Licenses__r.size > 0,true, false)}">
+                    <apex:outputText value="{!provider.Licenses__r[0].name}"/>
+                </apex:outputPanel>
+            </apex:column>
+          
+
+        </apex:pageBlockTable>
+ 
+    
+    </apex:pageBlock>
+
+    </td>
+      
+  </tr>
+  
+  </table>
+  
+  <apex:pageBlock title="Debug - SOQL" id="debug">
+      <apex:outputText value="{!debugSoql}" /><br/><br/><apex:outputText value="{!debugSoql2}" />      
+  </apex:pageBlock>    
+
+  </apex:pageBlock>
+
+  </apex:form>
 </apex:page>

@@ -84,16 +84,17 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>DD_Provider_Lookup__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
+        <fullName>DD_Provider__c</fullName>
         <externalId>false</externalId>
         <label>Provider</label>
         <referenceTo>Account</referenceTo>
         <relationshipLabel>NPI</relationshipLabel>
-        <relationshipName>NPI</relationshipName>
-        <required>false</required>
+        <relationshipName>DD_Provider_NPI</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
         <trackTrending>false</trackTrending>
-        <type>Lookup</type>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
     <label>NPI</label>
     <nameField>
@@ -103,12 +104,5 @@
     </nameField>
     <pluralLabel>NPI</pluralLabel>
     <searchLayouts/>
-    <sharingModel>ReadWrite</sharingModel>
-    <validationRules>
-        <fullName>DD_Provider_Update_Validation</fullName>
-        <active>true</active>
-        <errorConditionFormula>(ISCHANGED( DD_Provider_Lookup__c )  &amp;&amp; ISNEW())  || ISCHANGED( DD_Provider_Lookup__c )</errorConditionFormula>
-        <errorDisplayField>DD_Provider_Lookup__c</errorDisplayField>
-        <errorMessage>Provider cannot be changed</errorMessage>
-    </validationRules>
+    <sharingModel>ControlledByParent</sharingModel>
 </CustomObject>
