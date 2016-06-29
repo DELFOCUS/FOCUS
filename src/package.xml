@@ -58,6 +58,9 @@
 		<members>DD_FSF_Chart_Fields__c-FSF_Chart_Fields Layout</members>
         <members>DD_Inquiry__c-Intake Layout</members>
         <members>DD_Service_Taxonomy__c-Service Taxonomy Layout</members>
+        <members>Accreditation__c-Accreditation Layout</members>
+        <members>License__c-License/Accreditation Layout</members>
+        <members>Account-Account Layout</members>
         <name>Layout</name>
     </types>
     <types>
