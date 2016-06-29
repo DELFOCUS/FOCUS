@@ -147,7 +147,11 @@ public with sharing class ProviderSearchController {
     String accEffTill = Apexpages.currentPage().getParameters().get('accEffTill'); 
     String accExpFrom = Apexpages.currentPage().getParameters().get('accExpFrom'); 
     String accExpTill = Apexpages.currentPage().getParameters().get('accExpTill'); 
-    //Benny
+    if(string.isEmpty(npi) && string.isEmpty(refn) && string.isEmpty(refType) && string.isEmpty(street) && string.isEmpty(city)&& string.isEmpty(state)&& string.isEmpty(zip)&& string.isEmpty(apt)&& string.isEmpty(phone) && string.isEmpty(firstName) && string.isEmpty(lastName)&& string.isEmpty(emrPro)&& string.isEmpty(gtf)&& string.isEmpty(licType) && string.isEmpty(licNumber)&& string.isEmpty(accType)){
+      ApexPages.Message msg = new ApexPages.Message(ApexPages.Severity.Info, Label.OneSearchCriteria);
+      ApexPages.addMessage(msg);
+      return null;
+    }
       if(!string.isEmpty(npi))  {
           soql =label.ProviderSearchSOQL+' and id in(select DD_Provider_Lookup__c from 	DD_Provider_NPI__c where DD_Provider_Lookup__c != null ';
           soql += ' and DD_NPI_Text__c LIKE \'%'+String.escapeSingleQuotes(npi)+'%\'';
