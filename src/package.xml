@@ -7,7 +7,9 @@
     <types>
         <members>DEL_Git_TEST</members>
         <members>ProviderSearchController</members>
-        <members>TaxonomySearchCtrl</members>
+        <members>ProviderSearchController_Test</members>
+        <members>ProviderSearchController</members>
+        <members>TaxonomySearchCtrlTest</members>
         <name>ApexClass</name>
     </types>
     <types>
