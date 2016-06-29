@@ -399,6 +399,30 @@
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
+    <fields>
+        <fullName>Phone_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Phone Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Home</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Work</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cell</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
     <label>Inquiry</label>
     <listViews>
         <fullName>All</fullName>
@@ -406,9 +430,10 @@
         <label>All</label>
     </listViews>
     <nameField>
-        <label>Intake Name</label>
+        <displayFormat>Inquiry-{0000}</displayFormat>
+        <label>Inquiry Name</label>
         <trackHistory>false</trackHistory>
-        <type>Text</type>
+        <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Inquiries</pluralLabel>
     <recordTypeTrackHistory>false</recordTypeTrackHistory>
@@ -575,6 +600,21 @@
                 <default>false</default>
             </values>
         </picklistValues>
+        <picklistValues>
+            <picklist>Phone_Type__c</picklist>
+            <values>
+                <fullName>Cell</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Home</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Work</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
     </recordTypes>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
@@ -587,5 +627,13 @@ INCLUDES( DD_How_Did_you_Hear_about_our_Program__c  , &quot;Other&quot;),
 ISBLANK( DD_How_Did_you_Hear_about_our_Pgm_Other__c ))</errorConditionFormula>
         <errorDisplayField>DD_How_Did_you_Hear_about_our_Pgm_Other__c</errorDisplayField>
         <errorMessage>Please provide the details of How Did you Hear about our Program?</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Screened_Out_Reason_Required_for_Yes</fullName>
+        <active>true</active>
+        <description>If  the value in Screened Out (Yes/ No)  is &apos;Yes&apos; then Screened Out Reason is mandatory</description>
+        <errorConditionFormula>ISPICKVAL(DD_Screened_Out_Yes_No__c,&apos;Yes&apos;)  &amp;&amp;  ISBLANK( DD_Screened_Out_Reason__c )</errorConditionFormula>
+        <errorDisplayField>DD_Screened_Out_Reason__c</errorDisplayField>
+        <errorMessage>Please provide the reason for Screen out</errorMessage>
     </validationRules>
 </CustomObject>

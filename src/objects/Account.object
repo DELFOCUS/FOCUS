@@ -2350,6 +2350,7 @@
     <recordTypes>
         <fullName>DD_Parent_Organization</fullName>
         <active>true</active>
+        <description>To capture information pertinent to Parent Organization Providers</description>
         <label>Parent Organization</label>
         <picklistValues>
             <picklist>AccountSource</picklist>

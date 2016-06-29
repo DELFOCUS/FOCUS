@@ -75,6 +75,10 @@ public class TaxonomySearchCtrl{
                 || !String.isEmpty(Level2Serv) || !String.isEmpty(Level3SubServ) || !String.isEmpty(HPC) 
                 || (!String.isEmpty(selectedDivision) && selectedDivision != 'None') || (!String.isEmpty(Resident) && Resident != 'None') || (!String.isEmpty(serviceStat) && serviceStat != 'None')){
             searchQuery = searchQuery + ' WHERE ';
+        }else{
+            ApexPages.Message msg = new ApexPages.Message(ApexPages.Severity.Info, Label.OneSearchCriteria);
+            ApexPages.addMessage(msg);
+            return null;
         } 
         if(!String.isEmpty(Level1Code)){
             searchQuery = searchQuery + ' DD_Level_1_Code__c = '+ Integer.valueOF(Level1Code) +' AND ';

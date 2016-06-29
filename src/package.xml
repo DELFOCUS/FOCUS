@@ -3,7 +3,9 @@
     <types>
         <members>DEL_Git_TEST</members>
         <members>ProviderSearchController</members>
+        <members>ProviderSearchController_Test</members>
         <members>TaxonomySearchCtrl</members>
+        <members>TaxonomySearchCtrlTest</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -45,17 +47,34 @@
         <name>Flow</name>
     </types>
     <types>
+        <members>Account-Account Layout</members>
         <members>Account-FC Private Agency Layout</members>
         <members>Account-Foster Care Inquiry Layout</members>
         <members>Account-OCCL Provider Layout</members>
         <members>Account-Parent Organization Layout</members>
         <members>Account-Provider Entity Layout</members>
+        <members>Accreditation__c-Accreditation Layout</members>
+        <members>DD_Address__c-Address Layout</members>
+        <members>DD_Alternate_References__c-Alternate Reference Layout</members>
+        <members>DD_FSF_Chart_Fields__c-FSF_Chart_Fields Layout</members>
+        <members>DD_Inquiry__c-Inquiry Layout</members>
+        <members>DD_Provider_Address__c-Provider Address Layout</members>
+        <members>DD_Provider_Alias__c-Provider Alias Layout</members>
+        <members>DD_Provider_NPI__c-Provider NPI Layout</members>
+        <members>DD_Provider_Services__c-Provider Service Layout</members>
+        <members>DD_Provider_Type__c-Provider Type Layout</members>
         <members>DD_Service_Taxonomy__c-Service Taxonomy Layout</members>
+        <members>DD_Service_Taxonomy__c-Service Taxonomy Layout</members>
+        <members>License__c-License%2FAccreditation Layout</members>
         <name>Layout</name>
     </types>
     <types>
         <members>Contact.duplicate_contact_matching_rule</members>
         <name>MatchingRule</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>StaticResource</name>
     </types>
     <types>
         <members>DD_Provider_Type__c</members>
