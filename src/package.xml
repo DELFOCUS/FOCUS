@@ -65,7 +65,7 @@
         <members>DD_Provider_Type__c-Provider Type Layout</members>
         <members>DD_Service_Taxonomy__c-Service Taxonomy Layout</members>
         <members>DD_Service_Taxonomy__c-Service Taxonomy Layout</members>
-        <members>License__c-License%2FAccreditation Layout</members>
+        <members>License__c-License Layout</members>
         <name>Layout</name>
     </types>
     <types>
@@ -80,5 +80,5 @@
         <members>DD_Provider_Type__c</members>
         <name>Workflow</name>
     </types>
-    <version>37.0</version>
+    <version>34.0</version>
 </Package>
