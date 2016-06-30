@@ -3,7 +3,7 @@ public with sharing class ProviderSearchController {
   private String soql {get;set;}
   private String soql2 {get;set;}//Benny
   private Boolean addrDisable {get;set;}
-  
+  public String ShowResults {get;set;} 
   public List<account> providers {get;set;}
   public List<account> providers2 {get;set;}//Benny
   public account provider {get;set;}
@@ -37,6 +37,7 @@ public with sharing class ProviderSearchController {
     soql = label.ProviderSearchSOQL;
     soql2 = 'SOQL';//Benny
     addrDisable = false;
+    ShowResults = '';
     runQuery();
   }
    
@@ -86,6 +87,11 @@ public with sharing class ProviderSearchController {
 
         }
         system.debug('Providers >>>'+providers);
+        if(providers.Size() > 0){
+            ShowResults = 'Yes';
+        }else{
+            ShowResults = 'No';
+        }
     } catch (Exception e) {
       ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'Ooops!'));
     }

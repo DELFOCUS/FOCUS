@@ -68,7 +68,7 @@
                                           }
                                              
                                        </script> 
-                                       <apex:actionFunction name="searchServer" action="{!runSearch}" rerender="results,debug,errors">
+                                       <apex:actionFunction name="searchServer" action="{!runSearch}" rerender="results,debug,errors,NoResults">
                                           <apex:param name="firstName" value="" />
                                           <apex:param name="lastName" value="" />
                                           <apex:param name="street" value="" />
@@ -356,8 +356,8 @@
                                               });
                                           });
                                        </script> 
-                                       <apex:pageBlock mode="edit" id="results">
-                                          <apex:pageBlockTable value="{!providers}" var="provider" styleclass="fixme">
+                                       <apex:pageBlock mode="edit" id="results" >
+                                          <apex:pageBlockTable value="{!providers}" var="provider" styleclass="fixme" rendered="{!IF(ShowResults == 'Yes', true, false)}">
                                              <!-- styleclass="slds-table slds-table--bordered slds-table--cell-buffer slds-table--fixed-layout" > -->
                                              <!-- <apex:column >
                                                 <apex:facet name="header">
@@ -574,6 +574,9 @@
                                              <!-- </apex:dataTable> -->
                                           </apex:pageBlockTable>
                                        </apex:pageBlock>
+                                        <apex:outputPanel id="NoResults">
+                                            <apex:outputText value="Exhaustive search has found no evidence of any matches in the database." rendered="{!IF(ShowResults == 'No', true, false)}"/>                
+                                        </apex:outputPanel>
                                     </div>
                                  </td>
                               </tr>
@@ -581,8 +584,9 @@
                         </div>
                      <!--</div> 
                     <apex:pageBlock title="Debug - SOQL" id="debug">
-                        <apex:outputText value="{!debugSoql}" /><br/><br/><apex:outputText value="{!debugSoql2}" />      
-                        </apex:pageBlock>  -->  
+                        <apex:outputText value="{!debugSoql}" /><br/><br/><apex:outputText value="{!debugSoql2}" />     
+                        boolean {!ShowResults} 
+                        </apex:pageBlock> -->   
                   </apex:pageBlock>
                </apex:form>
             </div>
