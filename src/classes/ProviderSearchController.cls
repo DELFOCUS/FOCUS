@@ -164,6 +164,15 @@ public with sharing class ProviderSearchController {
       ApexPages.Message msg = new ApexPages.Message(ApexPages.Severity.Info, Label.OneSearchCriteria);
       ApexPages.addMessage(msg);
       return null;
+
+    }
+    if ((!string.isEmpty(licEffFrom) && licEffFrom.length() != 10) || (!string.isEmpty(licEffTill) && licEffTill.length() != 10) 
+|| (!string.isEmpty(licExpFrom) && licExpFrom.length() != 10) || (!string.isEmpty(licExpTill) && licExpTill.length() != 10)
+|| (!string.isEmpty(accEffFrom) && accEffFrom.length() != 10) || (!string.isEmpty(accEffTill) && accEffTill.length() != 10)
+|| (!string.isEmpty(accExpFrom) && accExpFrom.length() != 10) || (!string.isEmpty(accExpTill) && accExpFrom.length() != 10)) {
+          ApexPages.Message msg = new ApexPages.Message(ApexPages.Severity.Info, Label.DateFormat);
+          ApexPages.addMessage(msg);
+          return null;
     }
       if(!string.isEmpty(fein) &&(fein.length()>9 || !fein.isNumeric())){
           system.debug('inside error!');

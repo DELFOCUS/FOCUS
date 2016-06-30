@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
+        <fullName>DateFormat</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Checks if Date entered is correct</shortDescription>
+        <value>Please check if the Date format is correct!</value>
+    </labels>
+    <labels>
         <fullName>FEIN</fullName>
         <language>en_US</language>
         <protected>false</protected>
