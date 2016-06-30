@@ -107,20 +107,25 @@ public with sharing class ProviderSearchController {
         String firstName = Apexpages.currentPage().getParameters().get('firstname');
         String lastName = Apexpages.currentPage().getParameters().get('lastname');
         String emrPro = Apexpages.currentPage().getParameters().get('emrPro');
-        String gtf = Apexpages.currentPage().getParameters().get('gtf'); 
+        String gtf = Apexpages.currentPage().getParameters().get('gtf');
+
+        String firstNameId = label.ProviderFirstNameId;
+        String lastNameId = 'acc2';
+        String emrProId = label.ProviderEmergencyId;
+        String gtfId = label.ProviderGTFId;
         system.debug('variables>>>>>>>>>>>>>>>>'+firstname + '____' + lastname + '____' + emrPro + '______' + gtf);
         //PageReference reference=new PageReference('/001/e?retURL=%2F001%2Fo&00N35000000Hw5N=' + firstName);
         String url = '/001/e?retURL=%2F001%2Fo';
         if (lastName != '')
-            url += '&acc2=' + lastname;
+            url += '&' + lastNameId +'=' + lastname;
         if (firstname != '')
-            url += '&00N35000000Hw5N=' + firstname;
+            url += '&' + firstNameId + '=' + firstname;
         if (gtf != '')
-            url += '&00N35000000Hw5S=' + gtf;
+            url += '&' + gtfId+ '=' + gtf;
         if (emrPro != '')
-            url += '&00N35000000Hw5X=' + emrPro;
+            url += '&' + emrProId+ '=' + emrPro;
         String url2 = '/setup/ui/recordtypeselect.jsp?ent=Account&retURL=%2F001%2Fo&save_new_url=%2F001%2Fe%3FretURL%3D%252F001%252Fo';
-        PageReference reference=new PageReference(url2);
+        PageReference reference=new PageReference(url);
         reference.setRedirect(true);
         return reference;
     }
@@ -147,6 +152,7 @@ public with sharing class ProviderSearchController {
     String licEffFrom = Apexpages.currentPage().getParameters().get('licEffFrom');
     //Date licEffFrom = date.parse(Apexpages.currentPage().getParameters().get('licEffFrom'));
     String licEffTill = Apexpages.currentPage().getParameters().get('licEffTill'); 
+        system.debug('licEffTill>>>>>>>>>>>' + licEffTill.length());
     String licExpFrom = Apexpages.currentPage().getParameters().get('licExpFrom'); 
     String licExpTill = Apexpages.currentPage().getParameters().get('licExpTill'); 
     String accType = Apexpages.currentPage().getParameters().get('accType'); 
@@ -159,6 +165,12 @@ public with sharing class ProviderSearchController {
       ApexPages.addMessage(msg);
       return null;
     }
+      if(!string.isEmpty(fein) &&(fein.length()>9 || !fein.isNumeric())){
+          system.debug('inside error!');
+          ApexPages.Message msg = new ApexPages.Message(ApexPages.Severity.Info, Label.FEIN);
+          ApexPages.addMessage(msg);
+          return null;
+      }
       if(!string.isEmpty(npi))  {
           soql =label.ProviderSearchSOQL+' and id in(select DD_Provider_Lookup__c from 	DD_Provider_NPI__c where DD_Provider_Lookup__c != null ';
           soql += ' and DD_NPI_Text__c LIKE \'%'+String.escapeSingleQuotes(npi)+'%\'';

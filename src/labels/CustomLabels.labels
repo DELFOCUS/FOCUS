@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
+        <fullName>FEIN</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FEINOnlyNumeric</shortDescription>
+        <value>Please enter only 9 digits in FEIN.</value>
+    </labels>
+    <labels>
         <fullName>OneSearchCriteria</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -15,10 +22,31 @@
         <value>Please enter Numeric values for Level 1 code, Level 2 code, Level 3 Code</value>
     </labels>
     <labels>
+        <fullName>ProviderEmergencyId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contains Id of the field Emr Pro assigned on UI</shortDescription>
+        <value>00N35000000Hw5X</value>
+    </labels>
+    <labels>
+        <fullName>ProviderFirstNameId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contains Id of the field First Name assigned on UI</shortDescription>
+        <value>00N35000000Hw5N</value>
+    </labels>
+    <labels>
+        <fullName>ProviderGTFId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contains Id of the field GTF assigned on UI</shortDescription>
+        <value>00N35000000Hw5S</value>
+    </labels>
+    <labels>
         <fullName>ProviderSearchSOQL</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>ProviderSearchSOQL</shortDescription>
-        <value>select name,id,DD_Status__c,DD_Provider_Id__c,	DD_FEIN__c,dd_Emergency_Provider__c,dd_GTF_Level__c,dd_First_Name__c,dd_Last_name__c,(select dd_City__c,DD_Apartment_Number__c,DD_Phone__c,DD_State__c,DD_Zip_Code__c,dd_Street_Number__c,dd_Street_2__c,name from del_Provider_Addresses__r where dd_Provider__c != null),(select id,DD_First_Name__c,DD_Last_Name__c from dd_Provider_Aliases__r ),(select name,dd_Effective_Date__c,dd_Expiration_Date__c,dd_Type__c from Licenses__r order by name desc ),(select dd_Effective_Date__c,dd_Expiration_Date__c,dd_Type__c from Accreditations__r order by dd_Type__c desc),(select DD_NPI__c,DD_NPI_Text__c from NPI__r where DD_Active__c = true),(select dd_Reference_Number__c,dd_Reference_Type__c from del_Alternate_References__r where dd_Provider__c != null) from account where name != null</value>
+        <value>select name,id,DD_Status__c,DD_Provider_Id__c,	DD_FEIN__c,dd_Emergency_Provider__c,dd_GTF_Level__c,dd_First_Name__c,dd_Last_name__c,(select dd_City__c,DD_Apartment_Number__c,DD_Phone__c,DD_State__c,DD_Zip_Code__c,dd_Street_Number__c,dd_Street_2__c,name from del_Provider_Addresses__r where dd_Provider__c != null),(select id,DD_First_Name__c,DD_Last_Name__c from dd_Provider_Aliases__r ),(select name,dd_Effective_Date__c,dd_Expiration_Date__c,dd_Type__c from Licenses__r order by name desc ),(select dd_Effective_Date__c,dd_Expiration_Date__c,dd_Type__c from Accreditations__r order by dd_Type__c desc),(select DD_NPI__c from NPI__r where DD_Active__c = true),(select dd_Reference_Number__c,dd_Reference_Type__c from del_Alternate_References__r where dd_Provider__c != null) from account where name != null</value>
     </labels>
 </CustomLabels>
