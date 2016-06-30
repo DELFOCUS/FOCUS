@@ -180,6 +180,15 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>DD_Type__c</fields>
+        <fields>DD_Effective_Date__c</fields>
+        <fields>DD_Expiration_Date__c</fields>
+        <fields>DD_Service_Area__c</fields>
+        <fields>DD_Comments__c</fields>
+        <relatedList>Accreditation__c.DD_Service_Provider_Name__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
         <fields>DD_Effective_Date__c</fields>
         <fields>DD_Expiration_Date__c</fields>
         <fields>DD_Type__c</fields>
@@ -188,15 +197,6 @@
         <fields>DD_Comments__c</fields>
         <fields>DD_Service_Facility_Type__c</fields>
         <relatedList>License__c.DD_Service_Provider_Name__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>DD_Type__c</fields>
-        <fields>DD_Effective_Date__c</fields>
-        <fields>DD_Expiration_Date__c</fields>
-        <fields>DD_Service_Area__c</fields>
-        <fields>DD_Comments__c</fields>
-        <relatedList>Accreditation__c.DD_Service_Provider_Name__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
