@@ -289,13 +289,13 @@
     </fields>
     <fields>
         <fullName>DD_FEIN__c</fullName>
+        <caseSensitive>false</caseSensitive>
         <externalId>false</externalId>
         <label>FEIN</label>
-        <precision>9</precision>
+        <length>9</length>
         <required>false</required>
-        <scale>0</scale>
         <trackFeedHistory>false</trackFeedHistory>
-        <type>Number</type>
+        <type>Text</type>
         <unique>true</unique>
     </fields>
     <fields>
@@ -3301,6 +3301,13 @@
         <searchResultsAdditionalFields>CORE.USERS.ALIAS</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>DD_FEIN_Numeric_Value_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(ISNUMBER( DD_FEIN__c ))</errorConditionFormula>
+        <errorDisplayField>DD_FEIN__c</errorDisplayField>
+        <errorMessage>Only numeric values can be entered</errorMessage>
+    </validationRules>
     <validationRules>
         <fullName>DD_Provider_Parent_Org_Validation</fullName>
         <active>true</active>
