@@ -52,7 +52,6 @@
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableReports>false</enableReports>
-    <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <fields>
@@ -64,25 +63,15 @@
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>DD_NPI_Text__c</fullName>
+        <fullName>DD_NPI__c</fullName>
+        <caseSensitive>false</caseSensitive>
         <externalId>false</externalId>
-        <formula>TEXT( DD_NPI__c )</formula>
         <label>NPI</label>
+        <length>10</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>DD_NPI__c</fullName>
-        <externalId>false</externalId>
-        <label>NPI</label>
-        <precision>12</precision>
-        <required>true</required>
-        <scale>0</scale>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
+        <unique>true</unique>
     </fields>
     <fields>
         <fullName>DD_Provider_Lookup__c</fullName>
@@ -105,6 +94,13 @@
     <pluralLabel>NPI</pluralLabel>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>DD_Numeric_Check_Validation</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(ISNUMBER( DD_NPI__c ))</errorConditionFormula>
+        <errorDisplayField>DD_NPI__c</errorDisplayField>
+        <errorMessage>Only numeric values can be entered</errorMessage>
+    </validationRules>
     <validationRules>
         <fullName>DD_Provider_Update_Validation</fullName>
         <active>true</active>
