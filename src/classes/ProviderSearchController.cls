@@ -54,6 +54,7 @@ public with sharing class ProviderSearchController {
         system.debug('soql>>>'+soql);   
       providers = Database.query(soql + ' order by ' + sortField + ' ' + sortDir + ' limit 20');
       String duplicate;//Benny
+      system.debug('SOQL2 after >>>>>>>'+soql2); 
       if(!soql2.equals('SOQL')){
             providers2 = Database.query(soql2 + ' order by ' + sortField + ' ' + sortDir + ' limit 20');
             providers2.addall(providers);
@@ -101,6 +102,21 @@ public with sharing class ProviderSearchController {
     public void resetSOQL(){
         soql =label.ProviderSearchSOQL;
     }
+
+    public List<String> GetAvailableRecordTypeNamesForSObject(Schema.SObjectType objType){
+        List<String> names = new List<String>();
+        List<RecordTypeInfo> infos = objType.getDescribe().getRecordTypeInfos();
+        if (infos.size() > 1) {
+            for (RecordTypeInfo i : infos) {
+               if (i.isAvailable() 
+                && !String.valueOf(i.getRecordTypeId()).endsWith('AAA'))
+                    names.add(i.getName());
+            }
+        } 
+        else names.add(infos[0].getName());
+        return names;
+    }
+
   public PageReference newProvider() {
         
         //PageReference reference=new PageReference('https://www.google.com');  
@@ -108,7 +124,12 @@ public with sharing class ProviderSearchController {
         String lastName = Apexpages.currentPage().getParameters().get('lastname');
         String emrPro = Apexpages.currentPage().getParameters().get('emrPro');
         String gtf = Apexpages.currentPage().getParameters().get('gtf');
-
+        String providerType = Apexpages.currentPage().getParameters().get('providerType');
+        String providerTypeId = '';
+        if (!string.isEmpty(providerType)){
+            providerTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get(providerType).getRecordTypeId();
+            providerTypeId = providerTypeId.substring(0, 15);  
+        }
         String firstNameId = label.ProviderFirstNameId;
         String lastNameId = 'acc2';
         String emrProId = label.ProviderEmergencyId;
@@ -116,16 +137,22 @@ public with sharing class ProviderSearchController {
         system.debug('variables>>>>>>>>>>>>>>>>'+firstname + '____' + lastname + '____' + emrPro + '______' + gtf);
         //PageReference reference=new PageReference('/001/e?retURL=%2F001%2Fo&00N35000000Hw5N=' + firstName);
         String url = '/001/e?retURL=%2F001%2Fo';
-        if (lastName != '')
-            url += '&' + lastNameId +'=' + lastname;
-        if (firstname != '')
-            url += '&' + firstNameId + '=' + firstname;
-        if (gtf != '')
-            url += '&' + gtfId+ '=' + gtf;
-        if (emrPro != '')
-            url += '&' + emrProId+ '=' + emrPro;
-        String url2 = '/setup/ui/recordtypeselect.jsp?ent=Account&retURL=%2F001%2Fo&save_new_url=%2F001%2Fe%3FretURL%3D%252F001%252Fo';
-        PageReference reference=new PageReference(url2);
+        if (!string.isEmpty(providerTypeId)){
+            url += '&RecordType=' + providerTypeId;
+            if (!string.isEmpty(lastName))
+                url += '&' + lastNameId +'=' + lastname;
+            if (!string.isEmpty(firstname))
+                url += '&' + firstNameId + '=' + firstname;
+            if (!string.isEmpty(gtf))
+                url += '&' + gtfId+ '=' + gtf;
+            if (!string.isEmpty(emrPro))
+                url += '&' + emrProId+ '=' + emrPro;
+        }
+        else {
+          url = '/setup/ui/recordtypeselect.jsp?ent=Account&retURL=%2F001%2Fo&save_new_url=%2F001%2Fe%3FretURL%3D%252F001%252Fo'; 
+        }
+        //String url2 = '/setup/ui/recordtypeselect.jsp?ent=Account&retURL=%2F001%2Fo&save_new_url=%2F001%2Fe%3FretURL%3D%252F001%252Fo';
+        PageReference reference=new PageReference(url);
         reference.setRedirect(true);
         return reference;
     }
@@ -152,7 +179,7 @@ public with sharing class ProviderSearchController {
     String licEffFrom = Apexpages.currentPage().getParameters().get('licEffFrom');
     //Date licEffFrom = date.parse(Apexpages.currentPage().getParameters().get('licEffFrom'));
     String licEffTill = Apexpages.currentPage().getParameters().get('licEffTill'); 
-        system.debug('licEffTill>>>>>>>>>>>' + licEffTill.length());
+        //system.debug('licEffTill>>>>>>>>>>>' + licEffTill.length());
     String licExpFrom = Apexpages.currentPage().getParameters().get('licExpFrom'); 
     String licExpTill = Apexpages.currentPage().getParameters().get('licExpTill'); 
     String accType = Apexpages.currentPage().getParameters().get('accType'); 
@@ -170,6 +197,7 @@ public with sharing class ProviderSearchController {
 || (!string.isEmpty(licExpFrom) && licExpFrom.length() != 10) || (!string.isEmpty(licExpTill) && licExpTill.length() != 10)
 || (!string.isEmpty(accEffFrom) && accEffFrom.length() != 10) || (!string.isEmpty(accEffTill) && accEffTill.length() != 10)
 || (!string.isEmpty(accExpFrom) && accExpFrom.length() != 10) || (!string.isEmpty(accExpTill) && accExpFrom.length() != 10)) {
+          ShowResults = 'No';
           ApexPages.Message msg = new ApexPages.Message(ApexPages.Severity.Info, Label.DateFormat);
           ApexPages.addMessage(msg);
           return null;
@@ -225,7 +253,7 @@ public with sharing class ProviderSearchController {
         if (!string.isEmpty(gtf))
           soql +=  ' and dd_GTF_Level__c LIKE \'%'+String.escapeSingleQuotes(gtf)+'%\'';
         if (!string.isEmpty(fein))
-          soql +=  ' and DD_FEIN__c ='+fein;
+          soql +=  ' and DD_FEIN__c LIKE \'%'+String.escapeSingleQuotes(fein)+'%\'';
         
       }
       
@@ -353,5 +381,12 @@ public with sharing class ProviderSearchController {
                 return getPickValues(acc,'DD_Type__c');
             }
            set;
-    }  
+    }
+    public List<String> providerTypes
+        {
+            get{
+                return GetAvailableRecordTypeNamesForSObject(Account.SObjectType);
+            }
+            set;
+        }  
 }
