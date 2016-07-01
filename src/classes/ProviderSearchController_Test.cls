@@ -1,70 +1,70 @@
 @isTest
 public class ProviderSearchController_Test {
-     static testmethod void myUnitTest4(){
-        Test.startTest();
-        PageReference pg = Page.ProviderSearchPage;
-		Test.setCurrentPage(pg);
-        pg.getParameters().put('licType', 'acc license');
-        pg.getParameters().put('licNumber', '123456');
-		pg.getParameters().put('licEffFrom', 'test sold');
-        pg.getParameters().put('licEffTill', 'test name');
-		pg.getParameters().put('licExpFrom', 'test sold');
-        pg.getParameters().put('licExpTill', 'test name');
-		pg.getParameters().put('accType', '');
-        pg.getParameters().put('accEffFrom', 'test name');
-		pg.getParameters().put('accEffTill', 'test sold');
-        pg.getParameters().put('accExpFrom', 'test name');
-		pg.getParameters().put('accExpTill', 'test sold');
-        ProviderSearchController t = new ProviderSearchController();
-        t.newProvider();
-		t.runSearch();
-        
-        Test.stopTest();
-    }
-    static testmethod void myUnitTest3(){
-        Test.startTest();
-        PageReference pg = Page.ProviderSearchPage;
-		Test.setCurrentPage(pg);
-        pg.getParameters().put('licType', '');
-        pg.getParameters().put('licNumber', '');
-		pg.getParameters().put('licEffFrom', 'test sold');
-        pg.getParameters().put('licEffTill', 'test name');
-		pg.getParameters().put('licExpFrom', 'test sold');
-        pg.getParameters().put('licExpTill', 'test name');
-		pg.getParameters().put('accType', '');
-        pg.getParameters().put('accEffFrom', 'test name');
-		pg.getParameters().put('accEffTill', 'test sold');
-        pg.getParameters().put('accExpFrom', 'test name');
-		pg.getParameters().put('accExpTill', 'test sold');
-        ProviderSearchController t = new ProviderSearchController();
-        t.newProvider();
-		t.runSearch();
-        account acc=new account();
-        t.getPickValues(acc,'dd_Emergency_Provider__c');
-       // system.assertEquals(true, t.accTypeVal);
-        Test.stopTest();
-    }
-    static testmethod void myUnitTest2(){
+     static testmethod void myUnitTest2(){
         Test.startTest();
         PageReference pg = Page.ProviderSearchPage;
 		Test.setCurrentPage(pg);
         pg.getParameters().put('licType', 'test sold');
-        pg.getParameters().put('licNumber', 'test name');
-		pg.getParameters().put('licEffFrom', 'test sold');
-        pg.getParameters().put('licEffTill', 'test name');
-		pg.getParameters().put('licExpFrom', 'test sold');
-        pg.getParameters().put('licExpTill', 'test name');
-		pg.getParameters().put('accType', 'test sold');
-        pg.getParameters().put('accEffFrom', 'test name');
-		pg.getParameters().put('accEffTill', 'test sold');
-        pg.getParameters().put('accExpFrom', 'test name');
-		pg.getParameters().put('accExpTill', 'test sold');
+        pg.getParameters().put('licNumber', '12345');
+		pg.getParameters().put('licEffFrom', '06/01/2016');
+        pg.getParameters().put('licEffTill', '06/01/2016');
+		pg.getParameters().put('licExpFrom', '06/01/2016');
+        pg.getParameters().put('licExpTill', '06/01/2016');
+		pg.getParameters().put('accType', 'Business');
+        pg.getParameters().put('accEffFrom', '06/01/2016');
+		pg.getParameters().put('accEffTill', '06/01/2016');
+        pg.getParameters().put('accExpFrom', '06/01/2016');
+		pg.getParameters().put('accExpTill', '06/01/2016');
+        ProviderSearchController t = new ProviderSearchController();
+        //t.newProvider();
+		t.runSearch();
+        //t.runQuery();
+        Test.stopTest();
+    }
+    
+    
+     static testmethod void myUnitTest4(){
+        Test.startTest();
+        PageReference pg = Page.ProviderSearchPage;
+		Test.setCurrentPage(pg);
+        
+		pg.getParameters().put('accType', 'Business');
+        pg.getParameters().put('accEffFrom', '06/01/2016');
+		pg.getParameters().put('accEffTill', '06/01/2016');
+        pg.getParameters().put('accExpFrom', '06/01/2016');
+		pg.getParameters().put('accExpTill', '06/01/2016');
         ProviderSearchController t = new ProviderSearchController();
         t.newProvider();
 		t.runSearch();
-        
+        //t.providerTypes = 'test';
         Test.stopTest();
     }
+      static testmethod void myUnitTest3(){
+        Test.startTest();
+        PageReference pg = Page.ProviderSearchPage;
+		Test.setCurrentPage(pg);
+        pg.getParameters().put('licType', 'Business');
+        pg.getParameters().put('licNumber', '123456');
+		pg.getParameters().put('licEffFrom', '06/01/2016');
+        pg.getParameters().put('licEffTill', '06/01/2016');
+		pg.getParameters().put('licExpFrom', '06/01/2016');
+        pg.getParameters().put('licExpTill', '06/01/2016');
+		
+        ProviderSearchController t = new ProviderSearchController();
+        t.newProvider();
+		t.runSearch();
+        t.toggleSort();
+        t.resetSOQL();
+        
+        t.debugSoql='';
+        t.debugSoql2='';
+        account acc=new account();
+        t.getPickValues(acc,'dd_Emergency_Provider__c');
+        //t.GetAvailableRecordTypeNamesForSObject(Account.SObjectType);
+       // system.assertEquals(true, t.accTypeVal);
+        Test.stopTest();
+    }
+   
  static testmethod void myUnitTest1(){
         Test.startTest();
         PageReference pg = Page.ProviderSearchPage;
@@ -89,7 +89,11 @@ public class ProviderSearchController_Test {
         //System.currentPageReference().getParameters().put('TestName', firstName);
         ProviderSearchController t = new ProviderSearchController();
         /*t.getEmrgncyProVal();
-        t.getgtfLvl();
+        t.getgtfLvl();pg.getParameters().put('accType', '');
+        pg.getParameters().put('accEffFrom', 'test name');
+		pg.getParameters().put('accEffTill', 'test sold');
+        pg.getParameters().put('accExpFrom', 'test name');
+		pg.getParameters().put('accExpTill', 'test sold');
         t.getrefTypeList(); 
         t.getlicTypeVal();
         t.getaccTypeVal(); 
@@ -103,7 +107,7 @@ public class ProviderSearchController_Test {
         t.refType = 'efwe';
         t.state = 'Residential';
         t.zip = 'Active';
-        t.apt = '500084' ;   */    
+        t.apt = '500084' ;  */    
         
         t.newProvider();
 		t.runSearch();
