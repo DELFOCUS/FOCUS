@@ -3304,7 +3304,7 @@
     <validationRules>
         <fullName>DD_FEIN_Numeric_Value_Check</fullName>
         <active>true</active>
-        <errorConditionFormula>NOT(ISNUMBER( DD_FEIN__c ))</errorConditionFormula>
+        <errorConditionFormula>NOT(ISNUMBER( DD_FEIN__c )) &amp;&amp; NOT( ISBLANK(DD_FEIN__c) )</errorConditionFormula>
         <errorDisplayField>DD_FEIN__c</errorDisplayField>
         <errorMessage>Only numeric values can be entered</errorMessage>
     </validationRules>
