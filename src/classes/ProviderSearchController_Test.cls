@@ -18,6 +18,7 @@ public class ProviderSearchController_Test {
         ProviderSearchController t = new ProviderSearchController();
         //t.newProvider();
 		t.runSearch();
+        t.GetAvailableRecordTypeNamesForSObject(Account.SObjectType);
         //t.runQuery();
         Test.stopTest();
     }
@@ -36,6 +37,7 @@ public class ProviderSearchController_Test {
         ProviderSearchController t = new ProviderSearchController();
         t.newProvider();
 		t.runSearch();
+        t.GetAvailableRecordTypeNamesForSObject(Contact.SObjectType);
         //t.providerTypes = 'test';
         Test.stopTest();
     }
@@ -60,6 +62,8 @@ public class ProviderSearchController_Test {
         t.debugSoql2='';
         account acc=new account();
         t.getPickValues(acc,'dd_Emergency_Provider__c');
+        //sObject s = new Account();
+
         //t.GetAvailableRecordTypeNamesForSObject(Account.SObjectType);
        // system.assertEquals(true, t.accTypeVal);
         Test.stopTest();
